@@ -3,7 +3,7 @@
 import React from 'react';
 import {  render } from 'react-dom';
 import './index.css';
-import { Root } from './containers/Root';
+import { Root } from './containers';
 import registerServiceWorker from './registerServiceWorker';
 
 render(<Root />,

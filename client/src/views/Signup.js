@@ -3,7 +3,7 @@
 import React from "react";
 
 
-const Signup = () => {
+const SignUp = () => {
   return (
     <div className="Signup">
       <p> Signup</p>
@@ -12,4 +12,4 @@ const Signup = () => {
 };
 
 
-export default Signup;
+export default SignUp;

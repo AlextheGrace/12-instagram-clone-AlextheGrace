@@ -6,8 +6,8 @@ import {
   Home,
   Profile,
   Explore,
-
-
+  SignIn,
+  SignUp,
 } from "../../views";
 
 import './App.css';
@@ -19,8 +19,8 @@ const App = (children) => (
         <Route exact path="/" component={Home} />
         <Route path="/profile" component={Profile} />
         <Route path="/explore" component={Explore} />
-        {/* <Route path="/signup" component={SignUp} />
-        <Route path="/signin" component={SignIn} /> */}
+        <Route path="/signup" component={SignUp} />
+        <Route path="/signin" component={SignIn} />
       </Switch>
     
     </React.Fragment>

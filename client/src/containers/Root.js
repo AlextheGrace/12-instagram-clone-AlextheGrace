@@ -7,9 +7,20 @@ import { App } from '../components';
 import { Provider } from 'react-redux';
 
 
- const store = {
+const testReducer = () => {
+    return "ya man";
+}
+//combine reducers 
+// const allReducers = combineReducers({
   
- }
+// })
+
+ const store = createStore(
+   testReducer
+ )
+
+ console.log(store.getState());
+
 const Root = () => {
     return (
       <Provider store={store}>

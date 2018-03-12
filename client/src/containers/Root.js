@@ -1,23 +1,17 @@
 
 
 import React from 'react';
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, combineReducers } from "redux";
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { App } from '../components';
 import { Provider } from 'react-redux';
+import  thunk  from 'redux-thunk';
+import  { rootReducer }  from '../reducers';
 
-
-const testReducer = () => {
-    return "ya man";
-}
-//combine reducers 
-// const allReducers = combineReducers({
-  
-// })
+const middleware = [ thunk ];
 
  const store = createStore(
-   testReducer
- )
+   rootReducer, middleware);
 
  console.log(store.getState());
 

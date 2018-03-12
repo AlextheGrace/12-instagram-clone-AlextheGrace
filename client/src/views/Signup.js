@@ -1,12 +1,12 @@
 
 
 import React from "react";
-
+import { SignUpForm } from '../containers';
 
 const SignUp = () => {
   return (
     <div className="Signup">
-      <p> Signup</p>
+      <SignUpForm />
     </div>
   );
 };

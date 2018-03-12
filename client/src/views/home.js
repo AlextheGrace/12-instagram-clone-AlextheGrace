@@ -1,14 +1,14 @@
 
 
 import React from "react";
-import { ImageFeed } from '../containers';
+import { PhotoFeed } from '../containers';
 
 
 const Home = () => {
   return (
     <div className="Home">
       <p> home</p>
-      <ImageFeed />
+      {/* <PhotoFeed /> */}
     </div>
   );
 };

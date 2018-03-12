@@ -3,14 +3,17 @@ import {
     FETCH_PHOTOS_START,
     FETCH_PHOTOS_SUCCESS,
     FETCH_PHOTOS_FAILURE,
+    CREATE_USER_START,
+    CREATE_USER_SUCESS,
+    CREATE_USER_FAILURE,
     ADD_COMMENT
   } from "../constants";
   
 
-  const url = `https://5aa3cb5da53a8800141752fd.mockapi.io/photos`;
-  const myApiUrl = 'http://localhost:3002/photos';
+const url = `https://5aa3cb5da53a8800141752fd.mockapi.io/photos`;
+const myApiUrl = 'http://localhost:3002/photos';
 
-  export const requestPhotos = () => ({
+export const requestPhotos = () => ({
   type: FETCH_PHOTOS_START
 });
 
@@ -22,7 +25,15 @@ export const receivePhotos = data => ({
 export const fetchPhotos = () => dispatch => {
   dispatch(requestPhotos());
 
-  return fetch(url)
+  const requestData = {
+      headers: {
+        'Access-Control-Allow-Origin':'*'
+      }
+  }
+
+
+
+  return fetch(myApiUrl,requestData)
     .then(res => res.json())
     .then((data) => {
       console.log("successfully fetched photos", data);
@@ -37,9 +48,18 @@ export const fetchPhotos = () => dispatch => {
     });
 };
 
+// export registerUser = 
+
+// requestDetails = {
+//     headers: {
+//       'Accept': 'application/json',
+//       'Content-Type': 'application/json'
+//     }
+
+//     method:"POST"
+// }
 
 
+// return fetch('/users',requestDetails) 
 
-export const addComment = () => ({
-    type:ADD_COMMENT
-});
+

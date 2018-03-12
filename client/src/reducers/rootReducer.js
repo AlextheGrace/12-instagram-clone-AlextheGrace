@@ -22,7 +22,7 @@ import {
                 isFetching:false
             }
            case FETCH_PHOTOS_SUCCESS:
-            return { ...state, photos: action.payload }; 
+            return { ...state, isFetching:false, photos: action.payload }; 
            default:
             return state;
       }

@@ -2,6 +2,14 @@ var express = require('express');
 var app = express();
 // var db = require('./db.js');
 
+//app use settings 
+// dont think this is safe but implementing this so i can use it locally 
+app.use((req, res, next) => {
+    res.header('Acess-Control-Allow-Origin',"*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 //test index route get wudup
 app.get('/',(req,res) => {
     res.json({

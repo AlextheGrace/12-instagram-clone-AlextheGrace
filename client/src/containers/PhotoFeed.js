@@ -19,13 +19,13 @@ class PhotoFeed extends Component {
   }
 
   render() {
-    const { photos } = this.props;
+    const { photos, isFetching } = this.props;
 
-    // if(isFetching) {
-    //     return (
-    //         <p>loading...</p>
-    //     );
-    // }
+    if(isFetching) {
+        return (
+            <p>loading...</p>
+        );
+    }
 
     return (
         
@@ -43,7 +43,8 @@ class PhotoFeed extends Component {
 }
 
 const mapStateToProps = state => ({
-  photos: state.photos
+  photos: state.photos,
+  isFetching: state.isFetching
 });
 
 export default connect(mapStateToProps)(PhotoFeed);

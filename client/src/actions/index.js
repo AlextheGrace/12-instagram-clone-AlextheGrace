@@ -27,8 +27,10 @@ export const fetchPhotos = () => dispatch => {
 
   const requestData = {
       headers: {
-        'Access-Control-Allow-Origin':'*'
-      }
+        'Access-Control-Allow-Origin': '*',
+        'Vary': 'Origin'
+      },
+      mode: "no-cors"
   }
 
 

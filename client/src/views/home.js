@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <div className="Home">
       <p> home</p>
-      {/* <PhotoFeed /> */}
+      <PhotoFeed />
     </div>
   );
 };

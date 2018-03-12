@@ -2,12 +2,13 @@
 import {
     FETCH_PHOTOS_START,
     FETCH_PHOTOS_SUCCESS,
-    FETCH_PHOTOS_FAILURE
+    FETCH_PHOTOS_FAILURE,
+    ADD_COMMENT
   } from "../constants";
   
 
   const url = `https://5aa3cb5da53a8800141752fd.mockapi.io/photos`;
-
+  const myApiUrl = 'http://localhost:3002/photos';
 
   export const requestPhotos = () => ({
   type: FETCH_PHOTOS_START
@@ -35,3 +36,10 @@ export const fetchPhotos = () => dispatch => {
       });
     });
 };
+
+
+
+
+export const addComment = () => ({
+    type:ADD_COMMENT
+});

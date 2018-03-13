@@ -4,12 +4,12 @@ import {
     FETCH_PHOTOS_SUCCESS
   } from "../constants";
 
-  const initState = {
+  const initialState = {
       photos: [],
       isFetching: false
   };
 
-  const rootReducer = (state = initState, action) => {
+  const rootReducer = (state = initialState, action) => {
       switch(action.type) {
           case FETCH_PHOTOS_START:
             return {

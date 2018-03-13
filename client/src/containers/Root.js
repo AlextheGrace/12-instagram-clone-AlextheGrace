@@ -6,18 +6,18 @@ import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { App } from '../components';
 import { Provider } from 'react-redux';
 import  thunk  from 'redux-thunk';
-import  { rootReducer, commentReducer }  from '../reducers';
+import  { rootReducer, userReducer}  from '../reducers';
 
 const middleware = [ thunk ];
 
 
  const allReducers = combineReducers({
    rootReducer,
-   commentReducer
+   userReducer
  });
  
  const store = createStore(
-   rootReducer, applyMiddleware(...middleware));
+  allReducers, applyMiddleware(...middleware));
 
  console.log(store.getState());
 

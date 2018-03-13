@@ -1,7 +1,6 @@
 
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-
 import {
   fetchPhotos
 } from '../actions';
@@ -10,7 +9,6 @@ import { Photo } from "../components/Photo";
 class PhotoFeed extends Component {
   constructor(props) {
     super(props);
-
     this.state = {};
   }
 

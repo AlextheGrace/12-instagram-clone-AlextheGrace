@@ -1,6 +1,6 @@
 var app = require('./index');
 
-var port = 3002;
+var port = 3001;
 
 
 var server = app.listen(port, function() {

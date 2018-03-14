@@ -10,7 +10,7 @@ import {
 
 const url = `https://5aa3cb5da53a8800141752fd.mockapi.io/photos`;
 const userUrl = `https://5aa3cb5da53a8800141752fd.mockapi.io/users`;
-const myApiUrl = 'http://localhost:3002/photos';
+const myApiUrl = 'http://localhost:3001/photos/';
 
 export const requestPhotos = () => ({
 	type: FETCH_PHOTOS_START
@@ -25,22 +25,18 @@ export const fetchPhotos = () => dispatch => {
 	dispatch(requestPhotos());
 
 	const requestData = {
-		// headers: {
-		// 	'Access-Control-Allow-Origin': '*',
-		// 	Vary: 'Origin'
-		// },
-		// mode: 'no-cors'
+		
 	};
 
-	return fetch(url, requestData)
+	return fetch(myApiUrl)
 		.then(res => res.json())
 		.then(data => {
 			console.log('successfully fetched photos', data);
 			return dispatch(receivePhotos(data));
 			
 		})
-		.catch(response => {
-			console.error('fetch photos failed');
+		.catch(err => {
+			console.error('fetch photos failed bajs '+err);
 			return dispatch({
 				type: FETCH_PHOTOS_FAILURE
 			});

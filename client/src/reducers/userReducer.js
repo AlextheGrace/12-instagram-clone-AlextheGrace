@@ -6,7 +6,7 @@ import {
   } from "../constants";
 
   const initialState = {
-      users: [],
+      user: [],
       isSubmitting: false,
       isLoggedIn: false
   };
@@ -28,7 +28,7 @@ import {
                  ...state,
                   isSubmitting:false,
                   isLoggedIn:true,
-                  users: action.payload
+                  user: action.payload
             }; 
         default:
             return state;

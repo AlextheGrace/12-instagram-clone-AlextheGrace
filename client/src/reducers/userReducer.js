@@ -13,24 +13,24 @@ import {
 
   const userReducer = (state = initialState, action) => {
       switch(action.type) {
-          case CREATE_USER_START:
+        case CREATE_USER_START:
             return {
                 ...state,
                 isSubmitting: true
             }
-           case CREATE_USER_FAILURE:
+        case CREATE_USER_FAILURE:
             return {
                 ...state,
                 isSubmitting:false
             }
-           case CREATE_USER_SUCCESS:
+        case CREATE_USER_SUCCESS:
             return {
                  ...state,
                   isSubmitting:false,
-                  isloggedIn:true,
+                  isLoggedIn:true,
                   users: action.payload
             }; 
-           default:
+        default:
             return state;
       }
   };

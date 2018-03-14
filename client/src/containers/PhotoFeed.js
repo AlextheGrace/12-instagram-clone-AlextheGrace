@@ -41,8 +41,8 @@ class PhotoFeed extends Component {
 }
 
 const mapStateToProps = state => ({
-  photos: state.photos,
-  isFetching: state.isFetching
+  photos: state.photos.photos,
+  isFetching: state.photos.isFetching
 });
 
 export default connect(mapStateToProps)(PhotoFeed);

@@ -9,7 +9,7 @@ import {
       isFetching: false
   };
 
-  const rootReducer = (state = initialState, action) => {
+  const photoReducer = (state = initialState, action) => {
       switch(action.type) {
           case FETCH_PHOTOS_START:
             return {
@@ -28,4 +28,4 @@ import {
       }
   };
 
-  export default rootReducer;
+  export default photoReducer;

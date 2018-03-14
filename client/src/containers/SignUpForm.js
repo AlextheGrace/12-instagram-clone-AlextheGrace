@@ -7,9 +7,9 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
     return {
-            isLoggedin: state.isLoggedIn,
-            users: state.users,
-            isSubmitting: state.isSubmitting,
+            isLoggedIn: state.user.isLoggedIn,
+            users: state.user.users,
+            isSubmitting: state.user.isSubmitting,
 
            };
 
@@ -47,9 +47,15 @@ class SignUpForm extends Component {
 
         const { isLoggedIn, isSubmitting } = this.props;
 
-        if (this.props.isLoggedIn) {
-            return <Redirect to="/profile" />;
-          }
+        if (isLoggedIn) {
+            return <Redirect to="/profile"/>;
+        }
+
+        if(isSubmitting) {
+            return (
+                <p>loading...</p>
+            );
+        }
         return (
         <section className="App-signup">
           <h2>This is signup</h2>

@@ -51,7 +51,7 @@ export const finishRegisterUser = data => ({
 	type: CREATE_USER_SUCCESS,
 	payload: data
 });
-
+//register user
 export const registerUser = (newUser) => dispatch => {
     dispatch(startRegisterUser());
 
@@ -78,3 +78,5 @@ export const registerUser = (newUser) => dispatch => {
 		});
 	});
 };
+
+//login user 

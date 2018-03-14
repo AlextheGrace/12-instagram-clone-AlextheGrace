@@ -1,7 +1,15 @@
 var express = require('express');
 var app = express();
 var cors = require('cors');
-// var db = require('./db.js');
+var db = require('./db');
+var Photo = require('./models/photos');
+
+
+//check if connected to db 
+db.once('open', function(){
+    console.log("connected to mongodb");
+});
+
 
 //app use settings 
 // dont think this is safe but implementing this so i can use it locally 
@@ -14,24 +22,13 @@ app.get('/',(req,res) => {
     })
 });
 
-
 app.get('/photos', (req, res) => {
-    res.json(
-        [
-            {
-            id: "1",
-            createdAt: 1520863911,
-            name: "name 1",
-            imageUrl: "imageUrl 1"
-            },
-            {
-            id: "2",
-            createdAt: 1520863922,
-            name: "name 2",
-            imageUrl: "imageUrl 2"
-            }
-        ]
-    );
+    Photo.find({}),function(err,photos){
+        res.render('index', {
+            title:"photos",
+            photos: photos
+        });
+    }
 });
 
 // var UserController = require('./controllers/UserController');

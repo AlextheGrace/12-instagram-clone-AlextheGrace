@@ -9,4 +9,4 @@ let photoSchema = mongoose.Schema({
 
 
 
-let Photo = module.exports  = mongoose.model('Photo',photoSchema);
+let Photo = module.exports  = mongoose.model('Photo', photoSchema);

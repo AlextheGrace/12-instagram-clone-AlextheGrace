@@ -6,7 +6,7 @@ import {
   } from "../constants";
 
   const initialState = {
-      user: [],
+      user: {},
       isSubmitting: false,
       isLoggedIn: false
   };

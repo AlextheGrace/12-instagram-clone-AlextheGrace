@@ -19,7 +19,7 @@ import {
            case FETCH_PHOTOS_FAILURE:
             return {
                 ...state,
-                isFetching:false
+                isFetching: false
             }
            case FETCH_PHOTOS_SUCCESS:
             return { ...state, isFetching:false, photos: action.payload }; 

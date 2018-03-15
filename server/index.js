@@ -4,8 +4,12 @@ var app = express();
 var cors = require('cors');
 var db = require('./db');
 var Photo = require('./models/photos');
+var User = require('./models/users');
+
+var jwt = require('jsonwebtoken');
 
 
+ 
 
 /*  configs and settings, setup. */
 
@@ -26,6 +30,10 @@ app.get('/', (req,res) => {
     });
 });
 
+
+
+
+// photo routes put this into a controller later
 app.get('/photos', (req, res) => {
    Photo.find({}, (err, photos) => {
     if(err){
@@ -48,11 +56,36 @@ app.get('/photos:id', (req, res) => {
     }); 
  });
 
+ /*########################################################################*/
+
 app.get('/users', (req,res) => {
     res.json({
         "user":"dwdw"
     });
 });
+
+
+app.post('/register', (req, res) => {
+
+
+    
+    var hashPassword = bcrypt
+    User.create({
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password
+     }, (err, user) => {
+     if(err){
+         return res.status(500).send("error occured on server");
+     }
+     else {
+         res.status(200).send(photo);
+     }   
+    }); 
+ });
+
+
+
 
 
 // var UserController = require('./controllers/UserController');

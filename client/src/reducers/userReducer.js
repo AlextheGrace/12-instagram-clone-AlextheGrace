@@ -4,7 +4,8 @@ import {
     SIGNUP_USER_FAILURE,
     SIGNIN_USER_START,
 	SIGNIN_USER_SUCCESS,
-	SIGNIN_USER_FAILURE,
+    SIGNIN_USER_FAILURE,
+    SIGNOUT_USER,
     
   } from "../constants";
 
@@ -72,6 +73,7 @@ import {
                     auth: false,
                   }
             }
+
         case SIGNIN_USER_SUCCESS:
             return {
                  ...state,
@@ -83,6 +85,18 @@ import {
                   }
                   
             }; 
+
+        case SIGNOUT_USER:
+            return {
+                ...state,
+                user: {
+                    username:null,
+                    isSubmitting: null,
+                    isLoggedIn: false,
+                    auth: false,
+                  }
+            };
+
         default:
             return state;
       }

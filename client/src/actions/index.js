@@ -11,6 +11,7 @@ import {
 	LOGOUT_USER_START,
 	LOGOUT_USER_SUCESS,
 	LOGOUT_USER_FAILURE,
+	SIGNOUT_USER,
 	ADD_COMMENT
 } from '../constants';
 
@@ -18,6 +19,12 @@ const url = `https://5aa3cb5da53a8800141752fd.mockapi.io/photos`;
 const register = 'http://localhost:3001/register';
 const login = 'http://localhost:3001/login';
 const myApiUrl = 'http://localhost:3001/photos';
+
+
+
+
+
+//fetch photos
 
 export const requestPhotos = () => ({
 	type: FETCH_PHOTOS_START
@@ -58,6 +65,11 @@ export const finishRegisterUser = data => ({
 	type: SIGNUP_USER_SUCCESS,
 	payload: data
 });
+
+
+
+
+
 //register user
 export const registerUser = (newUser) => dispatch => {
     dispatch(startRegisterUser());
@@ -85,6 +97,10 @@ export const registerUser = (newUser) => dispatch => {
 	});
 };
 
+
+
+
+
 //login user 
 
 export const startLoginUser = () => ({
@@ -94,6 +110,11 @@ export const startLoginUser = () => ({
 export const finishLoginUser = data => ({
 	type: SIGNIN_USER_SUCCESS,
 	payload: data
+});
+
+export const signOutUser  = ({
+	type: SIGNOUT_USER,
+
 });
 
 export const loginUser = (logindetails) => dispatch => {
@@ -119,7 +140,27 @@ export const loginUser = (logindetails) => dispatch => {
 			type: SIGNIN_USER_FAILURE
 		});
 	});
-
-
-
 }
+
+
+export const logoutUser = () => dispatch => {
+
+	localStorage.removeItem('currentUser');
+
+	return dispatch(signOutUser());
+
+	};
+	
+	
+
+
+
+
+// export const addComment = (comment)
+
+
+
+
+//add comment 
+
+

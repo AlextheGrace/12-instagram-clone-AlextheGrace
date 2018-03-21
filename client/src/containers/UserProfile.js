@@ -2,7 +2,8 @@ import { Redirect } from 'react-router-dom';
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import {
-  registerUser
+  registerUser,
+  logoutUser
 } from '../actions';
 import { Photo } from "../components/Photo";
 
@@ -12,10 +13,20 @@ const mapStateToProps = state => ({
   user: state.user.user
 });
 
+
+
+const mapDispatchToProps = dispatch => {
+  
+}
+
 class UserProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+  }
+
+  logoutOnSubmit(){
+    this.props.dispatch(logoutUser());
   }
 
   componentDidMount() {
@@ -32,7 +43,9 @@ class UserProfile extends Component {
     return (
         
       <ul className="frow column-center">
-          <li> welcome {user.username}</li>
+          <p>{user.username}</p>
+          <button onClick={this.logoutOnSubmit}>Logout</button>
+        
       </ul>
     );
   }

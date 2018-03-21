@@ -32,7 +32,7 @@ export class Photo extends Component {
         <div className="Photo-header">
           <div className="Photo-header__avatar-container">
             <img
-              src={photo.imageUrl}
+              src={"yea"}
               className="Photo-header__avatar-img"
               alt={`${'username'} profile`}
             />

@@ -1,34 +1,87 @@
 import {
-    CREATE_USER_START,
-    CREATE_USER_SUCCESS,
-    CREATE_USER_FAILURE
+    SIGNUP_USER_START,
+    SIGNUP_USER_SUCCESS,
+    SIGNUP_USER_FAILURE,
+    SIGNIN_USER_START,
+	SIGNIN_USER_SUCCESS,
+	SIGNIN_USER_FAILURE,
     
   } from "../constants";
 
   const initialState = {
-      user: {},
-      isSubmitting: false,
-      isLoggedIn: false
+      user: {
+        username:null,
+        isSubmitting: false,
+        auth: localStorage.getItem('currentUser') ? true : false,
+      } 
+      
   };
 
   const userReducer = (state = initialState, action) => {
       switch(action.type) {
-        case CREATE_USER_START:
+        case SIGNUP_USER_START:
             return {
                 ...state,
-                isSubmitting: true
+                user: {
+                    username:null,
+                    isSubmitting: false,
+                    isLoggedIn: false,
+                    auth: false,
+            
+                  } 
             }
-        case CREATE_USER_FAILURE:
+        case SIGNUP_USER_FAILURE:
             return {
                 ...state,
-                isSubmitting:false
+                user: {
+                    username:null,
+                    isSubmitting: false,
+                    isLoggedIn: false,
+                    auth: false,
+                  }
             }
-        case CREATE_USER_SUCCESS:
+        case SIGNUP_USER_SUCCESS:
             return {
                  ...state,
-                  isSubmitting:false,
-                  isLoggedIn:true,
-                  user: action.payload
+                  user: {
+                    isSubmitting: false,
+                    username: action.payload.user.username,
+                    auth: action.payload.auth,
+                    token: action.payload.token
+                  }
+                  
+            };
+            case SIGNIN_USER_START:
+            return {
+                ...state,
+                user: {
+                    username:null,
+                    isSubmitting: false,
+                    isLoggedIn: false,
+                    auth: false,
+            
+                  } 
+            }
+        case SIGNIN_USER_FAILURE:
+            return {
+                ...state,
+                user: {
+                    username:null,
+                    isSubmitting: false,
+                    isLoggedIn: false,
+                    auth: false,
+                  }
+            }
+        case SIGNIN_USER_SUCCESS:
+            return {
+                 ...state,
+                  user: {
+                    isSubmitting: false,
+                    username: action.payload.user.username,
+                    auth: action.payload.auth,
+                    token: action.payload.token
+                  }
+                  
             }; 
         default:
             return state;

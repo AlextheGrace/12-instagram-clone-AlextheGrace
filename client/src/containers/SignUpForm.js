@@ -1,5 +1,5 @@
 import React, {Component } from 'react';
-import {registerUser} from '../actions';
+import { registerUser } from '../actions';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -7,12 +7,10 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
     return {
-            isLoggedIn: state.user.isLoggedIn,
-            users: state.user.users,
+            auth: state.user.user.auth,
             isSubmitting: state.user.isSubmitting,
 
            };
-
   }
 
 
@@ -25,6 +23,7 @@ class SignUpForm extends Component {
             username: '',
             email: '',
             password: ''
+
         }
     }
     
@@ -45,11 +44,12 @@ class SignUpForm extends Component {
     }
     render() {
 
-        const { isLoggedIn, isSubmitting } = this.props;
+        const { auth, isSubmitting } = this.props;
 
-        if (isLoggedIn) {
+        if (auth) {
             return <Redirect to="/profile"/>;
         }
+    
 
         if(isSubmitting) {
             return (

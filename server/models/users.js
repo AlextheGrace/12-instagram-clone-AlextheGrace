@@ -1,12 +1,32 @@
+var bcrypt = require('bcrypt');
 var mongoose = require('mongoose');
+
 
 let userSchema = mongoose.Schema({
             username: String,
             email: String,
-            password: {String}
+            password: {type: String, minlength:[8,'password must contain atleast 8 characters']}
 });
 
 
+userSchema.pre('save', function(next) {
+    var user = this;
+    var roundsOfSalt = 5;
+
+    if(!user.isModified('password')) return next();
 
 
-let User = module.exports  = mongoose.model('User', userSchema);
+    bcrypt.genSalt(roundsOfSalt,function (error, salt)  {
+        if(error) return next(error);
+        
+        bcrypt.hash(user.password, salt, function (error, hash) {
+            if (error) return next(error);
+
+            user.password = hash;
+            next();
+        });
+    });
+});
+
+mongoose.model('User', userSchema);
+module.exports = mongoose.model('User');

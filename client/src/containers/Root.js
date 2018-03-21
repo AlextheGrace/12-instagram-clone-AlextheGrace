@@ -14,9 +14,10 @@ const middleware = [ thunk ];
  const store = createStore(
     rootReducer, applyMiddleware(...middleware));
 
- console.log(store.getState());
+ 
 
 const Root = () => {
+  console.log(store.getState());
     return (
       <Provider store={store}>
         <Router>

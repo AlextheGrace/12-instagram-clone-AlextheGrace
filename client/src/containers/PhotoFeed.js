@@ -6,6 +6,12 @@ import {
 } from '../actions';
 import { Photo } from "../components/Photo";
 
+
+const mapStateToProps = state => ({
+  photos: state.photos.photos,
+  isFetching: state.photos.isFetching
+});
+
 class PhotoFeed extends Component {
   constructor(props) {
     super(props);
@@ -40,9 +46,6 @@ class PhotoFeed extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  photos: state.photos.photos,
-  isFetching: state.photos.isFetching
-});
+
 
 export default connect(mapStateToProps)(PhotoFeed);

@@ -1,9 +1,6 @@
 
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import {
-  fetchPhotos
-} from '../actions';
 import { Comment, CommentForm } from "../components";
 
 
@@ -15,12 +12,8 @@ class CommentFeed extends Component {
   }
 
   
-
-
   render() {
     const { comments } = this.props;
-
-    
 
     return (
         
@@ -38,7 +31,5 @@ class CommentFeed extends Component {
     );
 }
 }
-
-
 
 export default CommentFeed;

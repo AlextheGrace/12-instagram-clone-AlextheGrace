@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { Modal } from 'semantic-ui-react';
-import { Comments } from '../Comments'
+import { CommentFeed } from '../../containers'
 
 // import './Photo.css';
 
@@ -63,18 +63,7 @@ export class Photo extends Component {
             <div className="Photo__like-button">
               <button>Like</button>
             </div>
-
-
-
-            {/* comments   */}
-            
-            <li key={photo.comments._id}>
-              <Comments comment={comment} />
-            </li>
-
-
-
-
+            <CommentFeed comments={photo.comments}/>
 
           </div>
         </div>

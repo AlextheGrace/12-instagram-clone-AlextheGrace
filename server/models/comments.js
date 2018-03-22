@@ -1,10 +1,11 @@
 var mongoose = require('mongoose');
 
 let commentSchema = mongoose.Schema({
-    userId: String,
+    // userId: String,
     body: String,
-    createdAt:String
+    // createdAt:String
 });
 
 
 let Comment = module.exports  = mongoose.model('Comment', commentSchema);
+

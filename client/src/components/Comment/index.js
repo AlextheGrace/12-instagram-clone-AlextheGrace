@@ -4,42 +4,32 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { Modal } from 'semantic-ui-react';
 
+
 // import './Photo.css';
 
-export class Comments extends Component {
+export class Comment extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-
-        body:""
+      response: ''
     }
   }
 
-  componentDidMount() {
-  }
 
   render() {
     const { comment } = this.props;
 
     return (
-
         
-   
-               
-
-    );
+        <p>
+        <strong>{comment.user}</strong>:
+        {comment.body}
+        </p>
+    )
   }
 }
 
-const mapStateToProps = (state) => ({
 
 
-
-})
-
-const mapDispatchToProps = {
-
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Comments)
+export default Comment;

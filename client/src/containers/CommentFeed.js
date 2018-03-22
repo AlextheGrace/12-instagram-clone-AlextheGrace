@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 import {
   fetchPhotos
 } from '../actions';
-import { Photo } from "../components/Photo";
+import { Comment, CommentForm } from "../components";
+
+
 
 class CommentFeed extends Component {
   constructor(props) {
@@ -12,37 +14,31 @@ class CommentFeed extends Component {
     this.state = {};
   }
 
-//   componentDidMount() {
-//     this.props.dispatch(fetchPhotos())
-//   }
+  
+
 
   render() {
-    const { photo } = this.props;
+    const { comments } = this.props;
 
-    // if(isFetching) {
-    //     return (
-    //         <p>loading...</p>
-    //     );
-    // }
+    
 
     return (
         
       <ul className="frow column-center">
         {
-          photo.comments.map((comment) => (
+          comments.map((comment) => (
             <li key={comment._id}>
-              <Comments comment={comment} />
+              <Comment comment={comment} />
             </li>
-          ))
+          )
+        )
         }
+        <CommentForm/>
       </ul>
     );
-  }
+}
 }
 
-const mapStateToProps = state => ({
-  photos: state.photos.photos,
-  isFetching: state.photos.isFetching
-});
 
-export default connect(mapStateToProps)(PhotoFeed);
+
+export default CommentFeed;

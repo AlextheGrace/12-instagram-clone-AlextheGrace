@@ -3,14 +3,18 @@ var express = require('express');
 var app = express();
 var cors = require('cors');
 var db = require('./db');
-var Photo = require('./models/photos');
-var User = require('./models/users');
 var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 var bodyParser = require('body-parser');
 var config = require('./config');
 var router = express.Router();
 var tokenVerify = require('./middleware/tokenverify');
+
+
+//models
+var Photo = require('./models/photos');
+var User = require('./models/users');
+var Comment = require('./models/comments');
 
 
  
@@ -35,7 +39,7 @@ db.once('open', function(){
 //test index route get wudup
 app.get('/', (req,res) => {
     res.json({
-        "wudup":"wudup"
+        "REST_API":"Index Welcome"
     });
 });
 
@@ -54,7 +58,7 @@ app.get('/photos', (req, res) => {
    }); 
 });
 
-app.get('/:photoId', (req, res) => {
+app.get('photos/:photoId', (req, res) => {
     Photo.findById(req.params.photoId, (err, photo) => {
      if(err){
          return res.status(500).send("error occured on server");
@@ -64,6 +68,20 @@ app.get('/:photoId', (req, res) => {
      }   
     }); 
  });
+
+
+
+
+// app.put('/photos/:photoId/comment'), (req, res) => {
+//     Photo.findById(req.params.photoId, (err, photo) => {
+//         if(err) {
+//             return res.status(500).send("error occured on server");
+//         }
+//         else {
+
+//         }
+//     })
+// }
 
  /*########################################################################*/
 

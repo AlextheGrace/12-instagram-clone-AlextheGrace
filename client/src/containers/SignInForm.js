@@ -13,9 +13,6 @@ const mapStateToProps = state => {
   }
 
 
-
-
-
 class SignInForm extends Component {
     constructor(props) {
         super(props);
@@ -51,8 +48,6 @@ class SignInForm extends Component {
             return <Redirect to="/profile"/>;
         }
       
-
-
         return(
         <section className="App-signup">
           <h2>This is signin</h2>

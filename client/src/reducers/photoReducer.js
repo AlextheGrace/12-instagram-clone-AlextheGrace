@@ -1,8 +1,11 @@
 import {
+    ADD_COMMENT,
     FETCH_PHOTOS_START,
     FETCH_PHOTOS_FAILURE,
-    FETCH_PHOTOS_SUCCESS
+    FETCH_PHOTOS_SUCCESS,
   } from "../constants";
+
+import  update  from 'immutability-helper';
 
   const initialState = {
       photos: [],
@@ -11,6 +14,7 @@ import {
 
   const photoReducer = (state = initialState, action) => {
       switch(action.type) {
+           
           case FETCH_PHOTOS_START:
             return {
                 ...state,
@@ -22,7 +26,14 @@ import {
                 isFetching: false
             }
            case FETCH_PHOTOS_SUCCESS:
-            return { ...state, isFetching:false, photos: action.payload }; 
+            return {
+                 ...state, isFetching:false, photos: action.payload
+            };
+            case ADD_COMMENT:
+            const index = state.photos.findIndex(photo => photo._id === action.payload._id);
+            return {
+                
+            }
            default:
             return state;
       }

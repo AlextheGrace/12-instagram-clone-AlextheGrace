@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Modal } from 'semantic-ui-react';
 import { CommentFeed } from '../../containers'
+import { CommentForm } from '../../components'
+
 
 // import './Photo.css';
 
@@ -27,7 +29,11 @@ export class Photo extends Component {
   }
 
   render() {
-    const { photo } = this.props;
+    const { photo, user, isLoggedIn } = this.props;
+
+    // if(!isLoggedIn) {
+    //     return <Redirect to="/signin"/>;
+    // }
 
     return (
       <article className="Photo__root">
@@ -52,7 +58,6 @@ export class Photo extends Component {
           </div>
         </div>
         <div
-          
           className={`Photo__body`}>
           <Link to={`/photos/${photo._id}` }>
           <img src={photo.imageUrl} />
@@ -64,7 +69,7 @@ export class Photo extends Component {
               <button>Like</button>
             </div>
             <CommentFeed comments={photo.comments}/>
-
+              <CommentForm photoId={photo._id}/>
           </div>
         </div>
       </article>
@@ -73,8 +78,9 @@ export class Photo extends Component {
 }
 
 const mapStateToProps = (state) => ({
-
-})
+  user: state.user.user,
+  isLoggedIn: state.user.user.auth
+});
 
 const mapDispatchToProps = {
 

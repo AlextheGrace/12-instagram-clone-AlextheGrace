@@ -17,4 +17,5 @@ export const SIGNOUT_USER = 'SIGNOUT_USER';
 
 //comments
 export const ADD_COMMENT = 'ADD_COMMENT';
+export const ADD_COMMENT_FAIL = 'ADD_COMMENT_FAIL';
 

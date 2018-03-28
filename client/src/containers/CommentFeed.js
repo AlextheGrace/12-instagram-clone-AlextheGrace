@@ -23,10 +23,9 @@ class CommentFeed extends Component {
             <li key={comment._id}>
               <Comment comment={comment} />
             </li>
+            )
           )
-        )
         }
-        <CommentForm/>
       </ul>
     );
 }

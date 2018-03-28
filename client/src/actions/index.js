@@ -12,7 +12,8 @@ import {
 	LOGOUT_USER_SUCESS,
 	LOGOUT_USER_FAILURE,
 	SIGNOUT_USER,
-	ADD_COMMENT
+	ADD_COMMENT,
+	ADD_COMMENT_FAIL
 } from '../constants';
 
 const url = `https://5aa3cb5da53a8800141752fd.mockapi.io/photos`;
@@ -146,10 +147,40 @@ export const loginUser = (logindetails) => dispatch => {
 export const logoutUser = () => dispatch => {
 
 	localStorage.removeItem('currentUser');
+	dispatch(signOutUser());
 
-	return dispatch(signOutUser());
+};
 
-	};
+
+
+
+export const commentAdded = data => ({
+		type: FETCH_PHOTOS_SUCCESS,
+		payload: data
+});
+
+export const addComment = (comment) => dispatch => {
+	const commentHeader = {
+		headers: {
+		  'Accept': 'application/json',
+	      'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(comment),
+		method:"PUT"
+	}
+
+	return  fetch(`http://localhost:3001/photos/${comment.photoId}/comments`,commentHeader)
+	.then( res => res.json())
+	.then (data => {
+		console.log(data);
+		return dispatch(commentAdded())
+		.catch( err => {
+			return dispatch({
+				type: "ADD_COMMENT_FAIL"
+			});	
+		});
+	});
+}
 	
 	
 

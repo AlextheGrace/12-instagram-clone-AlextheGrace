@@ -1,9 +1,8 @@
 var mongoose = require('mongoose');
 
 let commentSchema = mongoose.Schema({
-    // userId: String,
     body: String,
-    // createdAt:String
+    usename: String,
 });
 
 

@@ -46,6 +46,4 @@ class PhotoFeed extends Component {
   }
 }
 
-
-
 export default connect(mapStateToProps)(PhotoFeed);

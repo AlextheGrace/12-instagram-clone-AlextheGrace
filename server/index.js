@@ -58,10 +58,10 @@ app.get('/photos', (req, res) => {
    }); 
 });
 
-app.get('photos/:photoId', (req, res) => {
-    Photo.findById(req.params.photoId, (err, photo) => {
+app.get('/photos/:photoid', (req, res) => {
+    Photo.findById(req.params.photoid, (err, photo) => {
      if(err){
-         return res.status(500).send("error occured on server");
+         return res.status(500).send("error occured on server"+ err);
      }
      else {
          res.status(200).send(photo);
@@ -69,19 +69,54 @@ app.get('photos/:photoId', (req, res) => {
     }); 
  });
 
+//  Comment.create(
+//     {
+//       body: req.body.body
+//     },
+//     function(error, comment) {
+//       if (error) {
+//         return res.status(500).send("failed");
+          
+          
+//       } else {
+//         Photo.findByIdAndUpdate(
+//           req.params.photoId, 
+//           {$push: {comments: [comment]}}, 
+//           {new: true},
+//           function(error, photo) {
+//             if (error) {
+//               return res.status(500).send("An error occurred when trying to comment the photo " + error)
+//             } else {
+//               return res.status(200).send({msg:'Comment was successfully stored', photo: photo})
+//             }
+//         });
+//       }
+//     }
+//   ); 
+
+//work in progress
+
+app.put('/photos/:photoId/comments', function(req, res) {
+    Comment.create({
+
+        body: req.body.body,
+        user: req.body.username
+
+    },(err, comment)=> {
+        if(err) return res.status(500).send("proper error while commenting");
+
+        Photo.findByIdAndUpdate(req.params.photoId,{ $push: { comments: [comment]}}, { new: true }, (err, photo) => {
+            if(err){
+                res.status(500).send("error")
+            }
+            else {
+                res.status(200).send(photo);
+            }
+        });
+    })
+});
 
 
-
-// app.put('/photos/:photoId/comment'), (req, res) => {
-//     Photo.findById(req.params.photoId, (err, photo) => {
-//         if(err) {
-//             return res.status(500).send("error occured on server");
-//         }
-//         else {
-
-//         }
-//     })
-// }
 
  /*########################################################################*/
 
@@ -100,13 +135,13 @@ app.post('/register',function(req, res) {
      else {
          //create jwt token
          var token = jwt.sign({ id: user._id },config.secret, {
-             expiresIn: 86400 //valid in
+             expiresIn: 86400 //valid in 24h
          });
          res.status(200).send({
              token:token,
               auth:true,
               user:user
-            });
+         });
      }   
     }); 
  });

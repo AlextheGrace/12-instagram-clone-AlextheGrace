@@ -11,9 +11,10 @@ import {
 
   const initialState = {
       user: {
-        username:null,
+        username:"",
         isSubmitting: false,
-        auth: localStorage.getItem('currentUser') ? true : false,
+         auth: false 
+         // localStorage.getItem('currentUser') ? true : false,
       } 
       
   };
@@ -90,8 +91,8 @@ import {
             return {
                 ...state,
                 user: {
-                    username:null,
-                    isSubmitting: null,
+                    username:"",
+                    isSubmitting: false,
                     isLoggedIn: false,
                     auth: false,
                   }

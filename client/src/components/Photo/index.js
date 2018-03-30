@@ -19,13 +19,7 @@ export class Photo extends Component {
   }
 
   componentDidMount() {
-    // fetch('/users')
-    //   .then(res => res.json())
-    //   .then(res => {
-    //     debugger;
-    //     this.setState({response: res})
-    //   })
-    //   .catch(err => console.error(err))
+
   }
 
   render() {

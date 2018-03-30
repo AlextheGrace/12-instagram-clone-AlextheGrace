@@ -13,8 +13,11 @@ import {
 	LOGOUT_USER_FAILURE,
 	SIGNOUT_USER,
 	ADD_COMMENT,
+	UPDATE_COMMENT,
 	ADD_COMMENT_FAIL
 } from '../constants';
+
+export const updateComment = data => ({type: UPDATE_COMMENT, payload: data})
 
 const url = `https://5aa3cb5da53a8800141752fd.mockapi.io/photos`;
 const register = 'http://localhost:3001/register';
@@ -169,17 +172,18 @@ export const addComment = (comment) => dispatch => {
 		method:"PUT"
 	}
 
-	return  fetch(`http://localhost:3001/photos/${comment.photoId}/comments`,commentHeader)
+	return  fetch(`http://localhost:3001/photos/${comment.photoId}/comments/${comment.username}`,commentHeader)
 	.then( res => res.json())
 	.then (data => {
 		console.log(data);
-		return dispatch(commentAdded())
+		dispatch(updateComment(data))
+		})
 		.catch( err => {
 			return dispatch({
 				type: "ADD_COMMENT_FAIL"
 			});	
 		});
-	});
+	
 }
 	
 	

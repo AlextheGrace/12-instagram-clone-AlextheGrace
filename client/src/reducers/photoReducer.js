@@ -1,5 +1,6 @@
 import {
     ADD_COMMENT,
+    UPDATE_COMMENT,
     FETCH_PHOTOS_START,
     FETCH_PHOTOS_FAILURE,
     FETCH_PHOTOS_SUCCESS,
@@ -30,10 +31,30 @@ import  update  from 'immutability-helper';
                  ...state, isFetching:false, photos: action.payload
             };
             case ADD_COMMENT:
-            const index = state.photos.findIndex(photo => photo._id === action.payload._id);
+            const photoId = state.photos.findIndex(photo => photo._id === action.payload.photoId);
+            const nextState = update(state, {
+                photos:{
+                    [photoId]:{
+                        comments:{
+                            $push: [action.payload]
+                        }
+                    }
+                }
+            });
+            
+            return nextState;
+
+            case UPDATE_COMMENT:
             return {
-                
+              ...state,
+              photos: state.photos.map(photo => {
+                if (photo._id === action.payload._id) {
+                  photo.comments = action.payload.comments
+                }
+                return photo
+              })
             }
+
            default:
             return state;
       }

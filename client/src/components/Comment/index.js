@@ -23,7 +23,7 @@ export class Comment extends Component {
     return (
         
         <p>
-        <strong>{comment.user}</strong>:
+        <Link to={`/${comment.username}`}><strong>{comment.username}</strong></Link>:
         {comment.body}
         </p>
     )

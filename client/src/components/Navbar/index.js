@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './navbar.css';
 import home from  './home_instamam.png';
-import profile from  './profile_instamam.png';
+import profile from  './profile2_instamam.png';
+
 
 
 const Navbar = () => (

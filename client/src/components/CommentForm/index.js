@@ -32,7 +32,7 @@ export class CommentForm extends Component {
 
     const comment = {
       photoId: this.props.photoId,  
-      user: this.props.user.username,
+      username: this.props.user.username,
       body: this.state.commentBody
     }
     this.props.dispatch(addComment(comment));

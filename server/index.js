@@ -39,7 +39,7 @@ db.once('open', function(){
 //test index route get wudup
 app.get('/', (req,res) => {
     res.json({
-        "REST_API":"Index Welcome"
+        "REST_API_INSTAMAM":"Index Welcome"
     });
 });
 
@@ -96,11 +96,11 @@ app.get('/photos/:photoid', (req, res) => {
 
 //work in progress
 
-app.put('/photos/:photoId/comments', function(req, res) {
+app.put('/photos/:photoId/comments/:username', function(req, res) {
     Comment.create({
 
         body: req.body.body,
-        user: req.body.username
+        username: req.params.username
 
     },(err, comment)=> {
         if(err) return res.status(500).send("proper error while commenting");

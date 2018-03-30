@@ -1,10 +1,9 @@
 
 import React, { Component } from "react";
-import { connect } from 'react-redux';
-import {
-  fetchPhotos
-} from '../actions';
 import { Photo } from "../components/Photo";
+import { connect } from 'react-redux';
+import { fetchPhotos } from '../actions';
+
 
 
 const mapStateToProps = state => ({
@@ -36,7 +35,7 @@ class PhotoFeed extends Component {
       <ul className="frow column-center">
         {
           photos.map((photo) => (
-            <li key={photo.id}>
+            <li key={photo._id}>
               <Photo photo={photo} />
             </li>
           ))

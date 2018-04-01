@@ -4,6 +4,8 @@ import {
     FETCH_PHOTOS_START,
     FETCH_PHOTOS_FAILURE,
     FETCH_PHOTOS_SUCCESS,
+    LIKE_PHOTO,
+    UNLIKE_PHOTO
   } from "../constants";
 
 import  update  from 'immutability-helper';

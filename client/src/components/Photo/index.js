@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom';
 import { Modal } from 'semantic-ui-react';
 import { CommentFeed } from '../../containers'
-import { CommentForm } from '../../components'
+import { CommentForm, LikeButton } from '../../components'
 
 
 // import './Photo.css';
@@ -60,7 +60,7 @@ export class Photo extends Component {
         <div className="Photo__footer">
           <div className="Photo__action-box">
             <div className="Photo__like-button">
-              <button>Like</button>
+              <LikeButton/>
             </div>
             <CommentFeed comments={photo.comments}/>
               <CommentForm photoId={photo._id}/>

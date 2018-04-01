@@ -20,3 +20,6 @@ export const ADD_COMMENT = 'ADD_COMMENT';
 export const ADD_COMMENT_FAIL = 'ADD_COMMENT_FAIL';
 export const UPDATE_COMMENT = 'UPDATE_COMMENT';
 
+//like Photos
+export const LIKE_PHOTO = 'LIKE_PHOTO';
+export const UNLIKE_PHOTO = 'UNLIKE_PHOTO';

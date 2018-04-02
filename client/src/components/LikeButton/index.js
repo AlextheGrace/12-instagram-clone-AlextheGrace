@@ -6,7 +6,10 @@ import { connect } from 'react-redux'
 
 
 
-
+const mapStateToProps = state => ({
+   
+    
+  });
 
 
 
@@ -19,7 +22,7 @@ class LikeButton extends Component {
     }
 
     handleChange(e) {
-        console.log("likey");
+        
     }
 
     render(){

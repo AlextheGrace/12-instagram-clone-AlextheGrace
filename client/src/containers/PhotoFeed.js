@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 import { Photo } from "../components/Photo";
 import { connect } from 'react-redux';

@@ -4,7 +4,8 @@ let photoSchema = mongoose.Schema({
     createdAt:String,
     name: String,
     imageUrl: String,
-    comments: Array
+    comments: Array,
+    likes: Array
 });
 
 

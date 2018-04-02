@@ -69,32 +69,20 @@ app.get('/photos/:photoid', (req, res) => {
     }); 
  });
 
-//  Comment.create(
-//     {
-//       body: req.body.body
-//     },
-//     function(error, comment) {
-//       if (error) {
-//         return res.status(500).send("failed");
-          
-          
-//       } else {
-//         Photo.findByIdAndUpdate(
-//           req.params.photoId, 
-//           {$push: {comments: [comment]}}, 
-//           {new: true},
-//           function(error, photo) {
-//             if (error) {
-//               return res.status(500).send("An error occurred when trying to comment the photo " + error)
-//             } else {
-//               return res.status(200).send({msg:'Comment was successfully stored', photo: photo})
-//             }
-//         });
-//       }
-//     }
-//   ); 
+//likes in progress
 
-//work in progress
+app.put('photos/:photoId/likes/:userId', function(req, res) {
+    Photo.findByIdAndUpdate(req.params.photoId),{$push: { likes: [req.params.userId]}},(err,photo) => {
+        if(err){
+            res.status(500).send("err");
+        }
+        else {
+            res.status(200).send("like sucess");
+        }
+    }
+});
+
+//comments
 
 app.put('/photos/:photoId/comments/:username', function(req, res) {
     Comment.create({

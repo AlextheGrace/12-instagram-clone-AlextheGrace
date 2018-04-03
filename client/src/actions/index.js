@@ -14,7 +14,10 @@ import {
 	SIGNOUT_USER,
 	ADD_COMMENT,
 	UPDATE_COMMENT,
-	ADD_COMMENT_FAIL
+	ADD_COMMENT_FAIL,
+	ADD_LIKE_START,
+	ADD_LIKE_SUCESS,
+	ADD_LIKE_FAIL
 } from '../constants';
 
 export const updateComment = data => ({type: UPDATE_COMMENT, payload: data})
@@ -185,17 +188,12 @@ export const addComment = (comment) => dispatch => {
 		});
 	
 }
-	
-	
 
+export const likePhoto = (like) => {
 
+	return console.log("liked");
 
+}
 
-// export const addComment = (comment)
-
-
-
-
-//add comment 
 
 

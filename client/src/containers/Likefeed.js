@@ -16,7 +16,7 @@ class LikeFeed extends Component {
     const { likes } = this.props;
 
     return (
-        
+       
       <ul>
         {
           likes.map((like) => (
@@ -26,8 +26,8 @@ class LikeFeed extends Component {
           ))
         }
       </ul>
-    );
+    )
   }
 }
 
-export default (LikeFeed);
+export default LikeFeed;

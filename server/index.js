@@ -80,7 +80,7 @@ app.put('photos/:photoId/likes/:userId', function(req, res) {
             res.status(200).send("like sucess");
         }
     }
-});
+});  
 
 //comments
 

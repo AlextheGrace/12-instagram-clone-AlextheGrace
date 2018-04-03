@@ -23,3 +23,6 @@ export const UPDATE_COMMENT = 'UPDATE_COMMENT';
 //like Photos
 export const LIKE_PHOTO = 'LIKE_PHOTO';
 export const UNLIKE_PHOTO = 'UNLIKE_PHOTO';
+export const ADD_LIKE_START = 'ADD_LIKE_START';
+export const ADD_LIKE_SUCESS = 'ADD_LIKE_SUCESS';
+export const ADD_LIKE_FAIL = 'ADD_LIKE_FAIL';

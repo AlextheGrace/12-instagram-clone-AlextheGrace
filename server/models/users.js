@@ -5,7 +5,8 @@ var mongoose = require('mongoose');
 let userSchema = mongoose.Schema({
             username: String,
             email: String,
-            password: {type: String, minlength:[8,'password must contain atleast 8 characters']}
+            password: {type: String, minlength:[8,'password must contain atleast 8 characters']},
+            photos: [{type: Schema.types.ObjectId, ref: 'Photo'}]
 });
 
 

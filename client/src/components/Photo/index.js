@@ -12,14 +12,11 @@ import { CommentForm, LikeButton } from '../../components'
 export class Photo extends Component {
   constructor(props) {
     super(props);
+    
 
     this.state = {
       response: ''
     }
-  }
-
-  componentDidMount() {
-
   }
 
   render() {
@@ -29,6 +26,8 @@ export class Photo extends Component {
     //     return <Redirect to="/signin"/>;
     // }
 
+    
+
     return (
       <article className="Photo__root">
         <div className="Photo-header">
@@ -36,12 +35,12 @@ export class Photo extends Component {
             <img
               src={"yea"}
               className="Photo-header__avatar-img"
-              alt={`${'username'} profile`}
+              alt={`${photo.author.username} profile`}
             />
           </div>
           <div className="Photo-header__metadata-container">
             <div className="Photo-header__username">
-              <Link to={`/${'johnny'}`}>{'John Appleseed'}</Link>
+              <Link to={`/${'johnny'}`}>{photo.name}</Link>
             </div>
             <div className="Photo-header__address">
               <Link to={`/explore/locations/${0}`}>{'New York City'}</Link>

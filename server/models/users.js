@@ -1,12 +1,14 @@
 var bcrypt = require('bcrypt');
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 
 let userSchema = mongoose.Schema({
+            _id: Schema.Types.ObjectId,
             username: String,
             email: String,
             password: {type: String, minlength:[8,'password must contain atleast 8 characters']},
-            photos: [{type: Schema.types.ObjectId, ref: 'Photo'}]
+            photos: [{type: Schema.Types.ObjectId, ref: 'Photo'}]
 });
 
 

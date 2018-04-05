@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 let photoSchema = mongoose.Schema({
     createdAt:String,
@@ -12,4 +13,4 @@ let photoSchema = mongoose.Schema({
 
 
 
-let Photo = module.exports  = mongoose.model('Photo', photoSchema);
+let Photo = module.exports  = mongoose.model('Photo',photoSchema);

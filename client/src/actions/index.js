@@ -94,10 +94,10 @@ export const registerUser = (newUser) => dispatch => {
 	.then( res => res.json())
 	.then ( data => {
 		console.log('successfully created new user', data);
-		localStorage.setItem('currentUser',data.token);
+		localStorage.setItem('currentUser', data.token);
 		return dispatch(finishRegisterUser(data));
 	}).catch( err => {
-		console.error('register user failed afafa');
+		console.error('register user failed afafa '+err);
 		return dispatch({
 			type: SIGNUP_USER_FAILURE
 		});

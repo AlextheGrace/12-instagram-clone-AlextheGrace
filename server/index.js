@@ -12,8 +12,8 @@ var tokenVerify = require('./middleware/tokenverify');
 
 
 //models
-var Photo = require('./models/photos');
 var User = require('./models/users');
+var Photo = require('./models/photos');
 var Comment = require('./models/comments');
 
 
@@ -55,7 +55,7 @@ app.get('/photos', (req, res) => {
     else {
         res.status(200).send(photos);
     }   
-   }); 
+   }).populate({path:'author', select: ['_id','username']})
 });
 
 app.get('/photos/:photoid', (req, res) => {
@@ -109,7 +109,7 @@ app.put('/photos/:photoId/comments/:username', function(req, res) {
  /*########################################################################*/
 
 /* make this auth controller */
-app.post('/register',function(req, res) {
+app.post('/register',function(req,res) {
 
     var hashedPassword = bcrypt.hashSync(req.body.password, 8);
     User.create({
@@ -118,7 +118,7 @@ app.post('/register',function(req, res) {
         password: req.body.password
      }, (error, user) => {
      if(error){
-         return res.status(500).send("error occured on server");
+         return res.status(500).send("error occured on server" + error);
      }
      else {
          //create jwt token
@@ -132,6 +132,19 @@ app.post('/register',function(req, res) {
          });
      }   
     }); 
+ });
+ app.get('/users/:username', function(req, res){
+     User.findOne( {username: req.params.username }, (err, user) => {
+        if(err) return res.status(500).send("error occured while logging in");
+
+        if(!user) return res.status(404).send('no user exists');
+
+
+        return res.status(200).send({
+            user:user,
+            message:"user found"
+        });
+     }).populate({path:'photos', select: ['_id','imageUrl','description','createdAt']});
  });
 
  app.post('/login', function(req,res) {

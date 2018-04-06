@@ -55,7 +55,7 @@ app.get('/photos', (req, res) => {
     else {
         res.status(200).send(photos);
     }   
-   }).populate({path:'author', select: ['_id','username']})
+   }).populate({path:'author', select: ['_id','username','avatar']})
 });
 
 app.get('/photos/:photoid', (req, res) => {
@@ -170,7 +170,7 @@ app.post('/register',function(req,res) {
                 token: token,
                 user:user
             });
-     });
+     }).populate({path:'photos', select: ['_id','imageUrl','description']})
  });
 
 

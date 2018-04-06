@@ -6,11 +6,13 @@
 import { combineReducers } from "redux";
 import userReducer from './userReducer';
 import photoReducer from './photoReducer';
+import authReducer from "./auth";
 
 
 
 
 const rootReducer = combineReducers({
+    auth: authReducer,
     user: userReducer,
     photos: photoReducer
 });

@@ -4,10 +4,10 @@ var Schema = mongoose.Schema;
 
 
 let userSchema = mongoose.Schema({
-            _id: Schema.Types.ObjectId,
             username: String,
             email: String,
             password: {type: String, minlength:[8,'password must contain atleast 8 characters']},
+            avatar: {type: String, default: 'https://api.adorable.io/avatars/155/abott@adorable.png'},
             photos: [{type: Schema.Types.ObjectId, ref: 'Photo'}]
 });
 

@@ -5,6 +5,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { Modal } from 'semantic-ui-react';
 import { CommentFeed, LikeFeed } from '../../containers'
 import { CommentForm, LikeButton } from '../../components'
+import './photo.css';
 
 
 // import './Photo.css';
@@ -33,21 +34,21 @@ export class Photo extends Component {
         <div className="Photo-header">
           <div className="Photo-header__avatar-container">
             <img
-              src={"yea"}
+              src={photo.author.avatar}
               className="Photo-header__avatar-img"
-              alt={`${photo.author.username} profile`}
+              alt={`${photo.author.avatar} profile`}
             />
           </div>
           <div className="Photo-header__metadata-container">
             <div className="Photo-header__username">
-              <Link to={`/${'johnny'}`}>{photo.name}</Link>
+              <Link to={`/${photo.author.username}`}>{photo.author.username}</Link>
             </div>
             <div className="Photo-header__address">
               <Link to={`/explore/locations/${0}`}>{'New York City'}</Link>
             </div>
           </div>
           <div className="Photo-header__timestamp">
-            <small>10 hours ago</small>
+            <small>{photo.createdAt}</small>
           </div>
         </div>
         <div

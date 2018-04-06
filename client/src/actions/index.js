@@ -17,7 +17,10 @@ import {
 	ADD_COMMENT_FAIL,
 	ADD_LIKE_START,
 	ADD_LIKE_SUCESS,
-	ADD_LIKE_FAIL
+	ADD_LIKE_FAIL,
+	FETCH_USER_START,
+	FETCH_USER_FAILURE,
+	FETCH_USER_SUCCESS
 } from '../constants';
 
 export const updateComment = data => ({type: UPDATE_COMMENT, payload: data})
@@ -119,10 +122,40 @@ export const finishLoginUser = data => ({
 	payload: data
 });
 
-export const signOutUser  = ({
+export const signOutUser  = () => ({
 	type: SIGNOUT_USER,
 
 });
+
+
+
+export const startFetchUser = () => ({
+	type: FETCH_USER_START
+});
+
+export const finishFetchUser = data => ({
+	type: FETCH_USER_SUCCESS,
+	payload: data
+});
+
+export const fetchUser = (username) => dispatch => {
+	dispatch(startFetchUser());
+
+	return fetch(`/users/${username}`)
+	.then( res => res.json())
+	.then(data => {
+		console.log(data);
+		return dispatch(finishFetchUser(data));
+	}).catch(err => {
+		
+		 dispatch({
+			type: FETCH_USER_FAILURE
+		})
+	});
+}
+
+
+
 
 export const loginUser = (logindetails) => dispatch => {
 	dispatch(startLoginUser());

@@ -6,7 +6,7 @@ import { loginUser } from '../actions';
 
 const mapStateToProps = state => {
     return {
-            isLoggedIn: state.user.user.auth,
+            auth: state.auth.auth,
             isSubmitting: state.user.isSubmitting,
 
            };

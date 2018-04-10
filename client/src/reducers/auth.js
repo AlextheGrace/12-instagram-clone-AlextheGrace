@@ -22,7 +22,6 @@ import {
             return {
                 ...state,
                     isSubmitting: true,
-                    isLoggedIn: false,
                     auth: false
             
                   } 
@@ -30,7 +29,6 @@ import {
         case SIGNUP_USER_FAILURE:
             return {
                 ...state, 
-                    isSubmitting: false,
                     isLoggedIn: false,
                     auth: false,
                   
@@ -68,6 +66,7 @@ import {
                  ...state,
                   
                     isSubmitting: false,
+                    isLoggedIn:true,
                     auth: action.payload.auth,
                     token: action.payload.token
             }; 

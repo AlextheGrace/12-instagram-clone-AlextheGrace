@@ -11,7 +11,6 @@ import {
 
 
 const mapStateToProps = state => ({
-  isLoggedIn: state.auth,
   user: state.user.user,
   auth: state.auth.auth
 });

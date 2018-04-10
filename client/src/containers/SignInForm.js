@@ -7,7 +7,7 @@ import { loginUser } from '../actions';
 const mapStateToProps = state => {
     return {
             auth: state.auth.auth,
-            isSubmitting: state.user.isSubmitting,
+            isSubmitting: state.auth.isSubmitting,
 
            };
   }
@@ -42,9 +42,9 @@ class SignInForm extends Component {
     render() {
 
 
-        const { isLoggedIn, isSubmitting } = this.props;
+        const { auth, isSubmitting } = this.props;
 
-        if (isLoggedIn) {
+        if (auth) {
             return <Redirect to="/profile"/>;
         }
       

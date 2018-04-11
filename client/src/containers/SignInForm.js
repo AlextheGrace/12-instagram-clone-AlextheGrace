@@ -2,13 +2,12 @@ import React, {Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loginUser } from '../actions';
-
+import { Input, Form, Button } from 'semantic-ui-react';
 
 const mapStateToProps = state => {
     return {
             auth: state.auth.auth,
             isSubmitting: state.auth.isSubmitting,
-
            };
   }
 
@@ -51,17 +50,21 @@ class SignInForm extends Component {
         return(
         <section className="App-signup">
           <h2>This is signin</h2>
-          <form onSubmit={this.handleSubmit}>
+          <Form onSubmit={this.handleSubmit}>
+            <Form.Field>
             <label>
             Email:
-            <input type="text" onChange={this.onChange}  value={this.state.email} name="email" />
+            <Input type="text" onChange={this.onChange}  value={this.state.email} name="email" />
             </label>
+            </Form.Field>
+            <Form.Field>
             <label>
             Password:
-            <input type="password" onChange={this.onChange} value={this.state.password} name="password" />
+            <Input type="password" onChange={this.onChange} value={this.state.password} name="password" />
             </label> 
-            <input type="submit" value="Submit" />
-          </form>
+            </Form.Field>
+            <Button onSubmit={this.handleSubmit}>Submit</Button>
+          </Form>
         </section>
         )
     }    

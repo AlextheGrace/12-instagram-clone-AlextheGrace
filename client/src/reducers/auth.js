@@ -5,7 +5,7 @@ import {
     SIGNIN_USER_START,
 	SIGNIN_USER_SUCCESS,
     SIGNIN_USER_FAILURE,
-    SIGNOUT_USER,
+    SIGNOUT_USER_START
     
   } from "../constants";
 
@@ -71,7 +71,7 @@ import {
                     token: action.payload.token
             }; 
 
-        case SIGNOUT_USER:
+        case SIGNOUT_USER_START:
             return {
                 ...state,
                     username:null,

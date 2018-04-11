@@ -14,8 +14,8 @@ var db = require('./db.js');
 //Controllers
 
 var PhotoController = require('./controllers/PhotoController');
-
-
+var AuthController = require('./controllers/AuthController');
+var UserController = require('./controllers/UserController');
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -26,6 +26,6 @@ app.use(function(req, res, next) {
 
 app.use(cors());
 app.use('/photos', PhotoController);
-
-
+app.use('/auth', AuthController);
+app.use('/users', UserController);
 module.exports = app;

@@ -7,7 +7,7 @@ import { PhotoFeed } from '../containers';
 const Home = () => {
   return (
     <div className="Home">
-      <p> home</p>
+      <p>Home</p>
       <PhotoFeed />
     </div>
   );

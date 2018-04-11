@@ -1,4 +1,5 @@
-import { Photo } from "../components/Photo";
+import { PhotoGrid } from "../containers";
+import { Photo, UserHero, } from "../components";
 import { Redirect } from 'react-router-dom';
 import React, { Component } from "react";
 import { connect } from 'react-redux';
@@ -12,62 +13,65 @@ import {
 
 const mapStateToProps = state => ({
   user: state.user.user,
-  auth: state.auth.auth
+  photos: state.user.user.photos,
+  auth: state.auth.auth,
+  
 });
 
 
-
-const mapDispatchToProps = dispatch => {
-  
-}
 
 
 
 class UserProfile extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+    };
   }
 
   componentWillMount() {
-    const {match} = this.props;
-
-    this.props.dispatch(fetchUser('alexander'));
+    // const {match} = this.props;
+    const userName = "alexander";
+    this.props.dispatch(fetchUser(userName));
+    console.log(this.props.user)
   }
 
   logoutOnSubmit(e){
     e.preventDefault();
-    // this.props.dispatch(logoutUser());
+    this.props.dispatch(logoutUser());
   }
 
   render() {
-    const { user, auth } = this.props;
+    const { user, auth, photos } = this.props;
+
 
     if (!auth) {
       return <Redirect to="/signin"/>;
     }
+   
 
-    return (
+  return (
     <div>
-    <div>
-      <ul className="frow column-center">
-          <p>{user.username}</p>
-          <img
-              src={user.avatar}
-              className="Photo-header__avatar-img"
-              alt={`${user.avatar} profile`}
-            />
-          <button onClick={this.logoutOnSubmit}>Logout</button>
-      </ul>
+    <UserHero user={user}/>
+    <PhotoGrid photos={photos}/>
     </div>
-    <div>
-    </div>
-    </div>
-
-
     );
-  }
-}
+  }  
+}    
+        /* <UserPhotoGrid photos={user.photos}/>   */
+        
+   /* <ul>
+    {photos.photos.map(photo =>
+      <li keys={photo._id}>
+      <Photo photo={photo} />
+      </li>
+    )} 
+    </ul> */
+ 
+ 
+  
+  
+
 
 
 

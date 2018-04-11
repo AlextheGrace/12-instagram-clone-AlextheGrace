@@ -1,13 +1,17 @@
 
 
 import React from "react";
-import { UserProfile } from '../containers';
+import { UserProfile, PhotoFeed } from '../containers';
+
+
+
 
 const Profile = () => {
   return (
     <div className="Profile">
       <p> Profile page</p>
       <UserProfile/>
+      /////////////////
     </div>
   );
 };

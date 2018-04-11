@@ -11,7 +11,7 @@ import {
 	LOGOUT_USER_START,
 	LOGOUT_USER_SUCESS,
 	LOGOUT_USER_FAILURE,
-	SIGNOUT_USER,
+	SIGNOUT_USER_START,
 	ADD_COMMENT,
 	UPDATE_COMMENT,
 	ADD_COMMENT_FAIL,
@@ -25,9 +25,9 @@ import {
 
 export const updateComment = data => ({type: UPDATE_COMMENT, payload: data})
 
-const url = `https://5aa3cb5da53a8800141752fd.mockapi.io/photos`;
-const register = 'http://localhost:3001/register';
-const login = 'http://localhost:3001/login';
+// const url = `https://5aa3cb5da53a8800141752fd.mockapi.io/photos`;
+const register = 'http://localhost:3001/auth/register';
+const login = 'http://localhost:3001/auth/login';
 const myApiUrl = 'http://localhost:3001/photos';
 
 
@@ -109,26 +109,6 @@ export const registerUser = (newUser) => dispatch => {
 
 
 
-
-
-//login user 
-
-export const startLoginUser = () => ({
-	type: SIGNIN_USER_START
-});
-
-export const finishLoginUser = data => ({
-	type: SIGNIN_USER_SUCCESS,
-	payload: data
-});
-
-export const signOutUser  = () => ({
-	type: SIGNOUT_USER,
-
-});
-
-
-
 export const startFetchUser = () => ({
 	type: FETCH_USER_START
 });
@@ -141,13 +121,12 @@ export const finishFetchUser = data => ({
 export const fetchUser = (username) => dispatch => {
 	dispatch(startFetchUser());
 
-	return fetch(`/users/${username}`)
-	.then( res => res.json())
+	return fetch(`http://localhost:3001/users/${username}`)
+	.then(res => res.json())
 	.then(data => {
 		console.log(data);
 		return dispatch(finishFetchUser(data));
 	}).catch(err => {
-		
 		 dispatch({
 			type: FETCH_USER_FAILURE
 		})
@@ -156,6 +135,27 @@ export const fetchUser = (username) => dispatch => {
 
 
 
+
+//login user 
+
+//promise
+
+//pending
+export const startLoginUser = () => ({
+	type: SIGNIN_USER_START
+});
+//resolve
+export const finishLoginUser = data => ({
+	type: SIGNIN_USER_SUCCESS,
+	payload: data
+});
+
+
+//pending
+export const signOutUser  = () => ({
+	type: SIGNOUT_USER_START
+
+});
 
 export const loginUser = (logindetails) => dispatch => {
 	dispatch(startLoginUser());
@@ -192,7 +192,7 @@ export const logoutUser = () => dispatch => {
 
 
 
-
+//resolved
 export const commentAdded = data => ({
 		type: FETCH_PHOTOS_SUCCESS,
 		payload: data

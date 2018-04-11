@@ -1,24 +1,21 @@
 import React, { Component } from "react";
 import { Photo } from "../components/Photo";
-import { connect } from 'react-redux';
-import { fetchPhotos } from '../actions';
+import { PhotoFeed } from '../containers';
+import './css/style.css';
 
 
 
-const mapStateToProps = state => ({
-  photos: state.photos.photos,
+
+
   
-});
-  
-class PhotoFeed extends Component {
+class PhotoGrid extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
 
   componentDidMount() {
-    this.props.dispatch(fetchPhotos());
-
+    
   }
 
   render() {
@@ -32,11 +29,11 @@ class PhotoFeed extends Component {
 
     return (
 
-      <ul className="frow column-center">
+      <ul className="photo-grid">
         {
           photos.map((photo) => (
             <li key={photo._id}>
-              <Photo photo={photo} />
+                <img src={photo.imageUrl}/>
             </li>
           ))
         }
@@ -46,4 +43,6 @@ class PhotoFeed extends Component {
   }
 }
 
-export default connect(mapStateToProps)(PhotoFeed);
+
+
+export default PhotoGrid;

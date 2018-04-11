@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
     return {
-            auth: state.user.user.auth,
+            auth: state.auth.auth,
             isSubmitting: state.user.isSubmitting,
 
            };

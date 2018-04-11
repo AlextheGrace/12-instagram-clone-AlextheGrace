@@ -6,11 +6,8 @@ import {
   } from "../constants";
 
   const initialState = {
-      user:null
-       
-         // localStorage.getItem('currentUser') ? true : false,
-     
-      
+      user:{}
+         // localStorage.getItem('currentUser') ? true : false,   
   }
 
   const userReducer = (state = initialState, action) => {
@@ -26,7 +23,7 @@ import {
         case FETCH_USER_SUCCESS:
             return {
                 ...state,
-                   user: action.payload.auth,
+                    user: action.payload.user,
             };
         
         default:

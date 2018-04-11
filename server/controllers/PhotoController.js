@@ -63,6 +63,14 @@ router.put('/:photoId/comments/:username', function(req, res) {
         });
     })
 });
+
+
+router.put('/photoId/like/:username', (req,res) => {
+    Photo.findById(req.params.photoId,(err, photo) => {
+        var i = photo.likes.indexOf(req.userId);
+    })
+    
+})
  
 
 module.exports = router;

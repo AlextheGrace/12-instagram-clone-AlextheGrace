@@ -28,7 +28,7 @@ class PhotoGrid extends Component {
     // }
 
     return (
-
+    <div className="photo-grid-container">
       <ul className="photo-grid">
         {
           photos.map((photo) => (
@@ -38,6 +38,7 @@ class PhotoGrid extends Component {
           ))
         }
       </ul>
+    </div>
 
     );
   }

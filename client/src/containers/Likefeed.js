@@ -26,6 +26,9 @@ class LikeFeed extends Component {
           ))
         }
       </ul>
+      // <div>
+      //   <li>{likes.count.length}</li>
+      // </div>
     )
   }
 }

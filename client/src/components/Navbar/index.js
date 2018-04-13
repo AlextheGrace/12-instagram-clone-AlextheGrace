@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './navbar.css';
 import home from  './home_instamam.png';
 import profile from  './profile2_instamam.png';
-
+import explore from './explore-instamam.png';
 
 
 const Navbar = () => (
@@ -17,7 +17,7 @@ const Navbar = () => (
                 <Link to="/profile"><img className="logos" src={profile}/></Link>
                 </li>
                 <li>
-                <Link to="/explore">Explore</Link>
+                <Link to="/explore"><img className="logos" src={explore}/></Link>
                 </li>
                 <li>
                 <Link to="/signin">Signin</Link>

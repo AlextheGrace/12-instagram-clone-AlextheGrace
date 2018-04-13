@@ -222,11 +222,43 @@ export const addComment = (comment) => dispatch => {
 	
 }
 
-export const likePhoto = (like) => {
 
-	return console.log("liked");
+export const startLikePhoto = () => ({
+	type: ADD_LIKE_START
+});
 
+export const finishLikePhoto = data => ({
+	type: ADD_LIKE_SUCESS,
+	payload: data
+});
+
+export const likePhoto = (like) => dispatch => {
+	const likeHeader = {
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json'
+		  },
+		  body: JSON.stringify(like),
+		  method:"PUT"
+	}
+
+	return  fetch(`http://localhost:3001/photos/${like.photoId}/likes/${like.userId}`,likeHeader)
+	.then( res => res.json())
+	.then (data => {
+		console.log(data);
+		dispatch(finishLikePhoto(data))
+		})
+		.catch( err => {
+			return dispatch({
+				type: "ADD_LIKE_FAIL"
+			});	
+		});
 }
+
+
+
+
+
 
 
 

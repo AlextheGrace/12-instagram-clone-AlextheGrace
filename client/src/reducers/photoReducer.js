@@ -5,7 +5,8 @@ import {
     FETCH_PHOTOS_FAILURE,
     FETCH_PHOTOS_SUCCESS,
     LIKE_PHOTO,
-    UNLIKE_PHOTO
+    UNLIKE_PHOTO,
+    ADD_LIKE_SUCESS
   } from "../constants";
 
 import  update  from 'immutability-helper';
@@ -52,6 +53,17 @@ import  update  from 'immutability-helper';
               photos: state.photos.map(photo => {
                 if (photo._id === action.payload._id) {
                   photo.comments = action.payload.comments
+                }
+                return photo
+              })
+            }
+
+            case ADD_LIKE_SUCESS:
+            return {
+              ...state,
+              photos: state.photos.map(photo => {
+                if (photo._id === action.payload._id) {
+                  photo.likes = action.payload.likes
                 }
                 return photo
               })

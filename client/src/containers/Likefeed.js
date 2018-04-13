@@ -17,18 +17,18 @@ class LikeFeed extends Component {
 
     return (
        
-      <ul>
-        {
-          likes.map((like) => (
-            <li key={like._id}>
-              <p>{like.count}</p>
-            </li>
-          ))
-        }
-      </ul>
-      // <div>
-      //   <li>{likes.count.length}</li>
-      // </div>
+      // <ul>
+      //   {
+      //     likes.map((like) => (
+      //       <li key={like._id}>
+      //         <p>{like.count}</p>
+      //       </li>
+      //     ))
+      //   }
+      // </ul>
+      <div>
+        <li>likes: {likes.length}</li>
+      </div>
     )
   }
 }

@@ -1,5 +1,5 @@
 import React, {Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loginUser } from '../actions';
 import { Input, Form, Button } from 'semantic-ui-react';
@@ -65,6 +65,7 @@ class SignInForm extends Component {
             </Form.Field>
             <Button onSubmit={this.handleSubmit}>Submit</Button>
           </Form>
+                <Link to="/signup">Signup</Link> here if you dont have an account
         </section>
         )
     }    

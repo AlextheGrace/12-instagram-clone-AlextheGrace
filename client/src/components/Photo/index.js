@@ -30,8 +30,9 @@ export class Photo extends Component {
     
 
     return (
-      <article className="Photo__root">
-        <div className="Photo-header">
+      <div className="ui card">
+        <div className="content">
+        <div className="header">
           <div className="Photo-header__avatar-container">
             <img
               src={photo.author.avatar}
@@ -61,13 +62,14 @@ export class Photo extends Component {
           <LikeFeed likes={photo.likes}/>
           <div className="Photo__action-box">
             <div className="Photo__like-button">
-              <LikeButton photoId={photo._id}/>
+              <LikeButton photoId={photo._id} userId={photo.author.userId}/>
             </div>
             <CommentFeed comments={photo.comments}/>
               <CommentForm photoId={photo._id}/>
           </div>
-        </div>
-      </article>
+          </div>
+        </div> 
+      </div>
     )
   }
 }

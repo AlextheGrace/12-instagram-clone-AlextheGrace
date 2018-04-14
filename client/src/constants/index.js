@@ -3,6 +3,13 @@ export const FETCH_PHOTOS_START = 'FETCH_PHOTOS_START';
 export const FETCH_PHOTOS_SUCCESS = 'FETCH_PHOTOS_SUCCESS';
 export const FETCH_PHOTOS_FAILURE = 'FETCH_PHOTOS_FAILURE';
 
+
+//fetch a photo 
+export const FETCH_PHOTO_START = 'FETCH_PHOTO_START';
+export const FETCH_PHOTO_SUCCESS = 'FETCH_PHOTO_SUCCESS';
+export const FETCH_PHOTO_FAILURE = 'FETCH_PHOTO_FAILURE';
+
+
 // auth user signup constants
 export const SIGNUP_USER_START = 'SIGNUP_USER_START';
 export const SIGNUP_USER_SUCCESS = 'SIGNUP_USER_SUCCESS';
@@ -36,3 +43,4 @@ export const UNLIKE_PHOTO = 'UNLIKE_PHOTO';
 export const ADD_LIKE_START = 'ADD_LIKE_START';
 export const ADD_LIKE_SUCESS = 'ADD_LIKE_SUCESS';
 export const ADD_LIKE_FAIL = 'ADD_LIKE_FAIL';
+export const UPDATE_LIKE = 'UPDATE_LIKE';

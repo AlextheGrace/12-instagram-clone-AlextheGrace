@@ -87,7 +87,7 @@ router.put("/:photoId/likes/:userId", (req, res) => {
                         { $pull: {likes: req.params.photoId }},
                         {new: true },
                         (err, user) => {
-                            res.status(200).send({ msg: 'removed like from photo' })
+                            res.status(200).send(photo)
                         }
                     )
                 }
@@ -100,7 +100,7 @@ router.put("/:photoId/likes/:userId", (req, res) => {
                 {new: true },
                 (err, photo) => {
                     if(err) {
-                        return res.status(500).send('fail adding like');
+                        return res.status(500).send(photo);
                     }
                     else {
                     
@@ -109,7 +109,7 @@ router.put("/:photoId/likes/:userId", (req, res) => {
                         {$push: { likes: req.params.photoId }},
                         {new: true },
                         (err, user) => {
-                            res.status(200).send({msg: 'Sucessfully add like to photo'});
+                            res.status(200).send(photo);
                         }
                     )
                     }

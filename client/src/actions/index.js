@@ -2,6 +2,9 @@ import {
 	FETCH_PHOTOS_START,
 	FETCH_PHOTOS_SUCCESS,
 	FETCH_PHOTOS_FAILURE,
+	FETCH_PHOTO_START,
+	FETCH_PHOTO_SUCCESS,
+	FETCH_PHOTO_FAILURE,
 	SIGNUP_USER_START,
 	SIGNUP_USER_SUCCESS,
 	SIGNUP_USER_FAILURE,
@@ -20,10 +23,11 @@ import {
 	ADD_LIKE_FAIL,
 	FETCH_USER_START,
 	FETCH_USER_FAILURE,
-	FETCH_USER_SUCCESS
+	FETCH_USER_SUCCESS,
+	UPDATE_LIKE
 } from '../constants';
 
-export const updateComment = data => ({type: UPDATE_COMMENT, payload: data})
+
 
 // const url = `https://5aa3cb5da53a8800141752fd.mockapi.io/photos`;
 const register = 'http://localhost:3001/auth/register';
@@ -67,6 +71,41 @@ export const fetchPhotos = () => dispatch => {
 		});
 };
 
+
+//fetch a photo 
+
+
+export const requestPhoto = () => ({
+	type: FETCH_PHOTO_START
+});
+
+export const receivePhoto = data => ({
+	type: FETCH_PHOTO_SUCCESS,
+	payload: data
+});
+
+export const fetchPhoto = (id) => dispatch => {
+	dispatch(requestPhotos());
+
+
+	return fetch(`http://localhost:3001/photos${id}`)
+		.then(res => res.json())
+		.then(data => {
+			console.log('successfully fetched photos', data);
+			return dispatch(receivePhoto(data));
+			
+		})
+		.catch(err => {
+			console.error('fetch photos failed'+err);
+			return dispatch({
+				type: FETCH_PHOTO_FAILURE
+			});
+		});
+};
+
+
+
+
 export const startRegisterUser = () => ({
 	type: SIGNUP_USER_START
 });
@@ -75,6 +114,10 @@ export const finishRegisterUser = data => ({
 	type: SIGNUP_USER_SUCCESS,
 	payload: data
 });
+
+
+
+
 
 
 
@@ -198,6 +241,9 @@ export const commentAdded = data => ({
 		payload: data
 });
 
+export const updateComment = data => ({type: UPDATE_COMMENT, payload: data})
+
+
 export const addComment = (comment) => dispatch => {
 	const commentHeader = {
 		headers: {
@@ -212,7 +258,7 @@ export const addComment = (comment) => dispatch => {
 	.then( res => res.json())
 	.then (data => {
 		console.log(data);
-		dispatch(updateComment(data))
+		dispatch(updateComment(data));
 		})
 		.catch( err => {
 			return dispatch({
@@ -232,6 +278,13 @@ export const finishLikePhoto = data => ({
 	payload: data
 });
 
+
+export const updateLikePhoto = data => ({
+	type: UPDATE_LIKE,
+	payload: data
+});
+	
+
 export const likePhoto = (like) => dispatch => {
 	const likeHeader = {
 		headers: {
@@ -246,7 +299,7 @@ export const likePhoto = (like) => dispatch => {
 	.then( res => res.json())
 	.then (data => {
 		console.log(data);
-		dispatch(finishLikePhoto(data))
+		dispatch(updateLikePhoto(data))
 		})
 		.catch( err => {
 			return dispatch({

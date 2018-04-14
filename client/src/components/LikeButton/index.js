@@ -9,7 +9,7 @@ import  { likePhoto } from '../../actions';
 
 const mapStateToProps = state => ({
 
-    user: state.user.user
+
 
   });
 
@@ -19,14 +19,16 @@ class LikeButton extends Component {
 
     constructor(props) {
         super(props);
+        this.handleChange = this.handleChange.bind(this);
         
 
     }
 
     handleChange(e) {
         const like = {
-            photoId: photo._id,
-            userId: user._id
+            photoId:  this.props.photoId,
+            userId: '5ab1543f39c32c1a1622017f'
+           
         }
         this.props.dispatch(likePhoto(like));
     }
@@ -34,7 +36,7 @@ class LikeButton extends Component {
 
     render(){
 
-        const { user, photo } = this.props;
+        const { user, photoId } = this.props;
 
         return(
             <button onClick={this.handleChange}>Likey</button>

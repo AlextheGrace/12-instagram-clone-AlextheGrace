@@ -2,6 +2,7 @@ import { PhotoGrid } from "../containers";
 import { Photo, UserHero, } from "../components";
 import { Redirect } from 'react-router-dom';
 import React, { Component } from "react";
+import {Button, Modal } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import {
   registerUser,
@@ -53,6 +54,10 @@ class UserProfile extends Component {
   return (
     <div>
     <UserHero user={user}/>
+    <Modal
+      trigger={<Button>Modal test</Button>}
+      content="IMAGE HERE"
+      />
     <PhotoGrid photos={photos}/>
     </div>
     );

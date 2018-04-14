@@ -36,7 +36,8 @@ router.use(bodyParser.urlencoded( {extended: false }));
 
         if (!validPassword) return res.status(401).send({
             auth: false,
-            token: null
+            token: null,
+            
         });
 
         var token = jwt.sign( {id: user._id },config.secret, {

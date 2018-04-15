@@ -117,6 +117,14 @@ router.put("/:photoId/likes/:userId", (req, res) => {
             )
         }
     })
+});
+
+
+//Upload photo 
+
+
+router.post('/upload',(req, res) => {
+
 })
  
 

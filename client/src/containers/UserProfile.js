@@ -54,10 +54,6 @@ class UserProfile extends Component {
   return (
     <div>
     <UserHero user={user}/>
-    <Modal
-      trigger={<Button>Modal test</Button>}
-      content="IMAGE HERE"
-      />
     <PhotoGrid photos={photos}/>
     </div>
     );

@@ -13,7 +13,7 @@ import {
         isSubmitting: false,
          auth: false,
          
-         // localStorage.getItem('currentUser') ? true : false, 
+        // ocalStorage.getItem('currentUser') ? true : false, 
   };
 
   const authReducer = (state = initialState, action) => {

@@ -14,7 +14,7 @@ class PhotoGrid extends Component {
     super(props);
     this.state = {};
 
-    //bug on semantic ui to style th
+   
   }
 
 
@@ -23,21 +23,21 @@ class PhotoGrid extends Component {
   }
 
   render() {
-    const { photos } = this.props;
-
+    const { photos, isFetching } = this.props;
+ //bug on semantic ui to style th
     const inlineStyle = {
       modal : {
         marginTop: '0px !important',
         marginLeft: 'auto',
-        marginRight: 'auto'
+        marginRight: 'auto',
       }
     }; 
 
-    // if(isFetching) {
-    //     return (
-    //         <p>loading...</p>
-    //     );
-    // }
+    if(isFetching) {
+        return (
+            <p>loading...</p>
+        );
+    }
 
     return (
     <div className="photo-grid-container">

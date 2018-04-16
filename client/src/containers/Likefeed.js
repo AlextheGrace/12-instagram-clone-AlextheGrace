@@ -16,16 +16,6 @@ class LikeFeed extends Component {
     const { likes } = this.props;
 
     return (
-       
-      // <ul>
-      //   {
-      //     likes.map((like) => (
-      //       <li key={like._id}>
-      //         <p>{like.count}</p>
-      //       </li>
-      //     ))
-      //   }
-      // </ul>
       <div>
         <li>likes: {likes.length}</li>
       </div>

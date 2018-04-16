@@ -7,3 +7,4 @@ export { default as CommentFeed } from './CommentFeed';
 export { default as LikeFeed } from './LikeFeed';
 export { default as UserPhotoGrid } from './UserPhotoGrid';
 export { default as PhotoGrid } from './PhotoGrid';  
+export { default  as UploadImage } from './UploadImage';

@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import { SignInForm } from '../containers';
 
@@ -7,7 +5,9 @@ import { SignInForm } from '../containers';
 const Signin = () => {
   return (
     <div className="Signin">
-      <SignInForm/>
+      <div class="ui two column centered grid">
+        <SignInForm/>
+      </div>
     </div>
   );
 };

@@ -40,7 +40,7 @@ router.use(bodyParser.urlencoded( {extended: false }));
             
         });
 
-        var token = jwt.sign( {id: user._id },config.secret, {
+        var token = jwt.sign( {id: user._id, username: user.username },config.secret, {
             expiresIn: 86400 // valid for 24 hours
         });
 

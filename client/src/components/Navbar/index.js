@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './navbar.css';
-import home from  './home_instamam.png';
-import profile from  './profile2_instamam.png';
-import explore from './explore-instamam.png';
+import home from  './img/home_instamam.png';
+import profile from  './img/profile2_instamam.png';
+import explore from './img/explore-instamam.png';
+import upload from './img/camera-upload-instamam.png'
 
 
 const Navbar = () => (
@@ -15,6 +16,9 @@ const Navbar = () => (
                 </li>
                 <li>
                 <Link to="/profile"><img className="logos" src={profile}/></Link>
+                </li>
+                <li>
+                <Link to="/upload"><img className="logos" src={upload}/></Link>
                 </li>
                 <li>
                 <Link to="/explore"><img className="logos" src={explore}/></Link>

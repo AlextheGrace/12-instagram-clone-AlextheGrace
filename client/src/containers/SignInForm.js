@@ -49,7 +49,6 @@ class SignInForm extends Component {
       
         return(
         <section className="App-signup">
-          <h2>This is signin</h2>
           <Form onSubmit={this.handleSubmit}>
             <Form.Field>
             <label>

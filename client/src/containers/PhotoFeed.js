@@ -22,13 +22,13 @@ class PhotoFeed extends Component {
   }
 
   render() {
-    const { photos } = this.props;
+    const { photos, isFetching } = this.props;
 
-    // if(isFetching) {
-    //     return (
-    //         <p>loading...</p>
-    //     );
-    // }
+    if(isFetching) {
+        return (
+            <p>loading...</p>
+        );
+    }
 
     return (
 

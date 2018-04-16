@@ -31,10 +31,10 @@ class UserProfile extends Component {
   }
 
   componentWillMount() {
-    // const {match} = this.props;
-    const userName = "alexander";
-    this.props.dispatch(fetchUser(userName));
-    console.log(this.props.user)
+  
+    this.props.dispatch(fetchUser(this.props.user.username));
+   
+  
   }
 
   logoutOnSubmit(e){
@@ -43,7 +43,7 @@ class UserProfile extends Component {
   }
 
   render() {
-    const { user, auth, photos } = this.props;
+    const { user, auth, photos, match } = this.props;
 
 
     if (!auth) {

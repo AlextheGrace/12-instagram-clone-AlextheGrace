@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Comment, CommentForm } from "../components";
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-
+import { Input, Form, Button } from 'semantic-ui-react';
 
 
 const mapStateToProps = state => ({
@@ -14,7 +14,12 @@ const mapStateToProps = state => ({
 class UploadImage extends Component {
     constructor(props) {
       super(props);
-      this.state = {file: '',imagePreviewUrl: ''};
+      this.state = {file: '',imagePreviewUrl: '', description:''};
+    }
+
+    handleChange(e) {
+      console.log(e.target.value);
+      this.setState({description: e.target.value})
     }
   
     handleSubmit(e) {
@@ -29,12 +34,11 @@ class UploadImage extends Component {
       let reader = new FileReader();
       let file = e.target.files[0];
   
-      reader.onloadend = () => {
-        this.setState({
+      
+        const Photo = {
           file: file,
           imagePreviewUrl: reader.result
-        });
-      }
+        }
   
       reader.readAsDataURL(file)
     }
@@ -42,9 +46,9 @@ class UploadImage extends Component {
     render() {
         const { auth } = this.props;
       
-      if (!auth) {
-        return <Redirect to="/signin"/>;
-      }
+      // if (!auth) {
+      //   return <Redirect to="/signin"/>;
+      // }
 
       let {imagePreviewUrl} = this.state;
       let imagePreview = null;
@@ -52,8 +56,8 @@ class UploadImage extends Component {
         imagePreview = (
         <div>
         <img src={imagePreviewUrl} />
-        <input name="description"></input>
-        <input name="stuff"></input>
+         
+        <Input name="description" onChange={this.handleChange}/>
         
         </div>);
       } else {
@@ -62,14 +66,14 @@ class UploadImage extends Component {
   
       return (
         <div className="previewComponent">
-          <form onSubmit={(e)=>this._handleSubmit(e)}>
-            <input className="fileInput" 
+          <Form onSubmit={(e)=>this.handleSubmit(e)}>
+            <Input className="fileInput" 
               type="file" 
-              onChange={(e)=>this._handleImageChange(e)} />
-            <button className="submitButton" 
+              onChange={(e)=>this.handleImageChange(e)} />
+            <Button className="submitButton" 
               type="submit" 
-              onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>
-          </form>
+              onClick={(e)=>this.handleSubmit(e)}>Upload Image</Button>
+          </Form>
           <div className="imgPreview">
             {imagePreview}
           </div>

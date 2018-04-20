@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom';
+import { Input } from 'semantic-ui-react';
 import  { addComment } from '../../actions';
 
 
@@ -48,12 +49,12 @@ export class CommentForm extends Component {
     return (
         <form onSubmit={this.handleSubmit}>
             <label>
-                <input  type="text"
+                <Input  type="text"
                         value={this.state.commentBody} 
                         onChange={this.handleChange} 
                         name="commentBody" />
                 </label> 
-            <input type="submit" value="Submit" />
+            <Input type="submit" value="Send  " />
         </form>
     )
   }

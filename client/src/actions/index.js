@@ -216,7 +216,9 @@ export const loginUser = (logindetails) => dispatch => {
 	return fetch(login,loginHeaderDetails)
 	.then( res => res.json())
 	.then ( data => {
-			console.log(data);
+			console.log(data.token);
+			localStorage.setItem('currentUser',data.token);
+			
 			return dispatch(finishLoginUser(data));
 	}).catch( err => {
 		dispatch({

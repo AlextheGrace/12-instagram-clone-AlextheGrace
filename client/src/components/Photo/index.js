@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom';
-import { Modal } from 'semantic-ui-react';
+import { Modal, Image } from 'semantic-ui-react';
 import { CommentFeed, LikeFeed } from '../../containers'
 import { CommentForm, LikeButton } from '../../components'
 import './photo.css';
@@ -34,7 +34,7 @@ export class Photo extends Component {
         <div className="content">
         <div className="header">
           <div className="Photo-header__avatar-container">
-            <img
+            <Image
               src={photo.author.avatar}
               className="Photo-header__avatar-img"
               alt={`${photo.author.avatar} profile`}
@@ -55,7 +55,7 @@ export class Photo extends Component {
         <div
           className={`Photo__body`}>
           <Link to={`/photos/${photo._id}` }>
-          <img src={photo.imageUrl} />
+          <Image src={photo.imageUrl} fluid />
           </Link>
         </div>
         <div className="Photo__footer">

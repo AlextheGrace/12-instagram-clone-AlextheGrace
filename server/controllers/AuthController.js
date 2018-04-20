@@ -47,6 +47,7 @@ router.use(bodyParser.urlencoded( {extended: false }));
            return res.status(200).send({
                auth: true,
                token: token,
+               user:user
            });
     });
 });
@@ -61,7 +62,7 @@ router.post('/register',function(req,res) {
         password: req.body.password
      }, (error, user) => {
      if(error){
-         return res.status(500).send("error occured on server" + error);
+         return res.status(500).send({errorhandler: "error while loggging in"});
      }
      else {
          //create jwt token

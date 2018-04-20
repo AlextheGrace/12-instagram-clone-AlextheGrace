@@ -11,7 +11,8 @@ import {
 
   const initialState = {
         isSubmitting: false,
-         auth: false,
+         auth: false
+         
          
         // ocalStorage.getItem('currentUser') ? true : false, 
   };
@@ -23,7 +24,7 @@ import {
                 ...state,
                     isSubmitting: true,
                     auth: false
-            
+                    
                   } 
             
         case SIGNUP_USER_FAILURE:
@@ -38,7 +39,8 @@ import {
                  ...state,
                     isSubmitting: false,
                     auth: action.payload.auth,
-                    token: action.payload.token
+                    token: action.payload.token,
+                    
                   
             };
             case SIGNIN_USER_START:
@@ -68,7 +70,8 @@ import {
                     isSubmitting: false,
                     isLoggedIn:true,
                     auth: action.payload.auth,
-                    token: action.payload.token
+                    token: action.payload.token,
+                    
             }; 
 
         case SIGNOUT_USER_START:

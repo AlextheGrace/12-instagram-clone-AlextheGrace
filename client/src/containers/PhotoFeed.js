@@ -31,8 +31,8 @@ class PhotoFeed extends Component {
     }
 
     return (
-
-      <ul className="frow column-center">
+    // <div className="ui-container">
+      <ul className="ui-container">
         {
           photos.map((photo) => (
             <li key={photo._id}>
@@ -41,6 +41,7 @@ class PhotoFeed extends Component {
           ))
         }
       </ul>
+    // </div>
 
     );
   }

@@ -13,12 +13,14 @@ import {
 
 import './App.css';
 
+
+
 const App = (children) => (
     <React.Fragment>
       <Navbar/>  
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/profile/:username" component={Profile} />
+        <Route path="/profile" component={Profile} />
         <Route path="/explore" component={Explore} />
         <Route path="/signup" component={SignUp} />
         <Route path="/signin" component={SignIn} />

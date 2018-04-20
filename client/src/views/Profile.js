@@ -2,33 +2,40 @@ import React, { Component } from "react";
 import { UserProfile, PhotoFeed } from '../containers';
 import { fetchUser } from '../actions';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 
 
+// const mapStateToProps = state => ({
+//     auth: state.auth.auth,
+//     user: state.user.user,
+    
+// });
 
-class Profile extends Component {
+
+
+export class Profile extends Component  {
   constructor(props){
     super(props);
+
   }
 
-  componentDidMount(){
-    const {match} = this.props;
+
+  
+
+  render(){
+    const { username } = this.props
+    return (
+      <div className="Profile">
+        <p> Profile page </p>
+          <UserProfile/>
+      </div>
+    );
   }
-  render() {
-
-  const { username } = this.props
-  return (
-    <div className="Profile">
-      <p> Profile page </p>
-      <UserProfile username={username}/>
-    </div>
-  );
-}
 }
 
 
-const mapStateToProps = state => ({
-  user: state.user
-})
 
-export default connect(mapStateToProps)(Profile);
+
+
+export default Profile;

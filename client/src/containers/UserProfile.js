@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import React, { Component } from "react";
 import {Button, Modal } from 'semantic-ui-react';
 import { connect } from 'react-redux';
+import jwt_decode from 'jwt-decode';
 import {
   registerUser,
   logoutUser,
@@ -31,8 +32,10 @@ class UserProfile extends Component {
   }
 
   componentWillMount() {
-  
-    this.props.dispatch(fetchUser(this.props.user.username));
+    const tokenData = localStorage.getItem('currentUser');
+    const decodedData = jwt_decode(tokenData);
+    console.log(decodedData.username);
+    this.props.dispatch(fetchUser(decodedData.username));
    
   
   }

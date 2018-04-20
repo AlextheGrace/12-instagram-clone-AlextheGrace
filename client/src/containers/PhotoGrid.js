@@ -18,10 +18,6 @@ class PhotoGrid extends Component {
   }
 
 
-  componentDidMount() {
-    
-  }
-
   render() {
     const { photos, isFetching } = this.props;
  //bug on semantic ui to style th
@@ -56,8 +52,7 @@ class PhotoGrid extends Component {
                   <p>Is it okay to use this photo?</p>
                 </Modal.Description>
                 </Modal.Content> 
-                </Modal>
-
+                </Modal> 
             </li>
           ))
         }

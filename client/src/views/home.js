@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div className="Home">
       <p>Home</p>
-      <div class="ui two column centered grid">
+      <div class="eight wide column">
       <PhotoFeed />
       </div>
     </div>

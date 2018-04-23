@@ -5,10 +5,22 @@ var cors = require('cors');
 var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 var bodyParser = require('body-parser');
+var multer = require('multer');
 
 var router = express.Router();
 // var tokenVerify = require('./middleware/tokenverify');
 
+
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, './images');
+    },
+    filename: (req, file, cb) => {
+        cb(null, req.params.userId + '-' + Date.now() + file.originalname)
+      }
+});
+
+var upload = multer({storage: storage});
 
 //models
 var User = require('../models/users');

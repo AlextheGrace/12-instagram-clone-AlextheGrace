@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Photo } from "../components/Photo";
 import { connect } from 'react-redux';
 import { fetchPhotos } from '../actions';
+import { Loader } from 'semantic-ui-react';
 
 
 
@@ -26,7 +27,7 @@ class PhotoFeed extends Component {
 
     if(isFetching) {
         return (
-            <p>loading...</p>
+          <Loader active inline='centered' />
         );
     }
 

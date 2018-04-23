@@ -28,8 +28,8 @@ router.use(bodyParser.urlencoded( {extended: false }));
     User.findOne( { email: req.body.email }, (error, user) => {
 
         //error handling if error loggin occured or 404 no user exists
-        if(error) return res.status(500).send("error occured while logging in");
-        if(!user) return res.status(404).send('no user exists registered');
+        if(error) return res.status(500).send({errorMessage: "error occured while logging in"});
+        if(!user) return res.status(404).send({errorMessage:'no user exists registered'});
 
        //compare password in db to requested password
         var validPassword = bcrypt.compareSync(req.body.password, user.password);
@@ -37,6 +37,7 @@ router.use(bodyParser.urlencoded( {extended: false }));
         if (!validPassword) return res.status(401).send({
             auth: false,
             token: null,
+            errorMessage: "invalid password"
             
         });
 

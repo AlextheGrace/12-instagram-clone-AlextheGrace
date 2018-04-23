@@ -23,7 +23,7 @@ class PhotoGrid extends Component {
  //bug on semantic ui to style th
     const inlineStyle = {
       modal : {
-        marginTop: '0px !important',
+        marginTop: '100px !important',
         marginLeft: 'auto',
         marginRight: 'auto',
       }
@@ -47,7 +47,7 @@ class PhotoGrid extends Component {
                 <Modal.Content image>
                 <Image wrapped size='medium' src={photo.imageUrl} />
                 <Modal.Description>
-                  <Header>Default Profile Image</Header>
+                  <Header>{photo.description}</Header>
                   <p>We've found the following gravatar image associated with your e-mail address.</p>
                   <p>Is it okay to use this photo?</p>
                 </Modal.Description>

@@ -8,6 +8,7 @@ const mapStateToProps = state => {
     return {
             auth: state.auth.auth,
             isSubmitting: state.auth.isSubmitting,
+            errorMessage: state.auth.errorMessage
            };
   }
 
@@ -20,7 +21,7 @@ class SignInForm extends Component {
         this.state = {
             email: '',
             password: '',
-            passwordVal: null
+            passwordIsVal: null,
         }
     }
 
@@ -28,12 +29,13 @@ class SignInForm extends Component {
         this.setState({ [e.target.name]: e.target.value });
         console.log(e.target.value);
 
-        if(this.state.password.length < 8) {
-             this.setState({passwordVal: "error" });
+        if(this.state.password.length <= 7) {
+             this.setState({passwordIsVal: false});
              console.log("error");
         }  
         else {
-            console.log("good")
+            console.log("good") 
+            this.setState({passwordIsVal: true});
         }
     }
     handleSubmit(e) {
@@ -51,7 +53,7 @@ class SignInForm extends Component {
     render() {
 
 
-        const { auth, isSubmitting, passwordVal } = this.props;
+        const { auth, isSubmitting, passwordIsVal, errorMessage } = this.props;
 
         if (auth) {
             return <Redirect to="/profile"/>;
@@ -67,16 +69,17 @@ class SignInForm extends Component {
             <Form.Field>
             <label>
             Email:
-            <Form.Input type="text" onChange={this.onChange}  value={this.state.email} name="email" error/>
+            <Form.Input type="text" onChange={this.onChange}  value={this.state.email} name="email" />
             </label>
             </Form.Field>
             <Form.Field>
             <label>
             Password:
-            <Form.Input type="password" onChange={this.onChange} value={this.state.password} name="password" sucess/>
+            <Form.Input type="password" onChange={this.onChange} value={this.state.password} name="password" { ...passwordIsVal ? "error" :"sucess"}/>
             </label> 
             </Form.Field>
             <Button onSubmit={this.handleSubmit}>Submit</Button>
+            <p className="error">{errorMessage}</p>
           </Form>
                 <Link to="/signup">Signup</Link> here if you dont have an account
         </section>

@@ -8,12 +8,6 @@ import { Modal } from 'semantic-ui-react';
 // import './Photo.css';
 
 export class UserHero extends Component {
-  
-  
-  
-  
-  
-  
   constructor(props) {
     super(props);
 

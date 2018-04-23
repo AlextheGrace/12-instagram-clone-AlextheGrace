@@ -9,6 +9,9 @@ export const FETCH_PHOTO_START = 'FETCH_PHOTO_START';
 export const FETCH_PHOTO_SUCCESS = 'FETCH_PHOTO_SUCCESS';
 export const FETCH_PHOTO_FAILURE = 'FETCH_PHOTO_FAILURE';
 
+//Upload a photo 
+export const UPLOAD_PHOTO_START = 'UPLOAD_PHOTO_START';
+export const UPLOAD_PHOTO_SUCCESS = 'UPLOAD_PHOTO_SUCESS';
 
 // auth user signup constants
 export const SIGNUP_USER_START = 'SIGNUP_USER_START';

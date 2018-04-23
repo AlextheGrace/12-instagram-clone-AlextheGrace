@@ -14,37 +14,33 @@ const mapStateToProps = state => ({
 class UploadImage extends Component {
     constructor(props) {
       super(props);
-      this.state = {file: '',imagePreviewUrl: '', description:''};
+      this.state = {photo: '',imagePreviewUrl: '', description:''};
     }
 
     handleChange(e) {
-      console.log(e.target.value);
-      this.setState({description: e.target.value})
-    }
+      const target = e.target
+		const name = target.name;
+		this.setState({
+			[name]: e.target.value
+    });
+  }
   
     handleSubmit(e) {
       e.preventDefault();
       
-      console.log('handle uploading-', this.state.file);
+      console.log('handle uploading-', this.state.photo);
     }
   
     handleImageChange(e) {
       e.preventDefault();
   
-      let reader = new FileReader();
-      let file = e.target.files[0];
-  
-      
-        const Photo = {
-          file: file,
-          imagePreviewUrl: reader.result
-        }
-  
-      reader.readAsDataURL(file)
+       
     }
   
     render() {
-        const { auth } = this.props;
+
+      
+      const { auth } = this.props;
       
       // if (!auth) {
       //   return <Redirect to="/signin"/>;
@@ -66,10 +62,10 @@ class UploadImage extends Component {
   
       return (
         <div className="previewComponent">
-          <Form onSubmit={(e)=>this.handleSubmit(e)}>
+          <Form onSubmit={this.handleSubmit} encType="multipart/form-data">
             <Input className="fileInput" 
-              type="file" 
-              onChange={(e)=>this.handleImageChange(e)} />
+              type="file" id="photo"
+              onChange={this.handleImageChange} />
             <Button className="submitButton" 
               type="submit" 
               onClick={(e)=>this.handleSubmit(e)}>Upload Image</Button>

@@ -11,7 +11,9 @@ import {
 
   const initialState = {
         isSubmitting: false,
-         auth: false
+         auth: false,
+         errorMessage: '',
+         isLoggedIn: false
          
          
         // ocalStorage.getItem('currentUser') ? true : false, 
@@ -60,13 +62,13 @@ import {
                     isSubmitting: false,
                     isLoggedIn: false,
                     auth: false,
+                    errorMessage: action.payload.errorMessage
                   
             }
 
         case SIGNIN_USER_SUCCESS:
             return {
                  ...state,
-                  
                     isSubmitting: false,
                     isLoggedIn:true,
                     auth: action.payload.auth,

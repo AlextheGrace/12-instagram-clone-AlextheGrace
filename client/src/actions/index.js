@@ -24,7 +24,9 @@ import {
 	FETCH_USER_START,
 	FETCH_USER_FAILURE,
 	FETCH_USER_SUCCESS,
-	UPDATE_LIKE
+	UPDATE_LIKE,
+	UPLOAD_PHOTO_START,
+	UPLOAD_PHOTO_SUCCESS
 } from '../constants';
 
 
@@ -214,17 +216,40 @@ export const loginUser = (logindetails) => dispatch => {
 	}
 
 	return fetch(login,loginHeaderDetails)
-	.then( res => res.json())
-	.then ( data => {
-			console.log(data.token);
-			localStorage.setItem('currentUser',data.token);
-			
-			return dispatch(finishLoginUser(data));
-	}).catch( err => {
-		dispatch({
-			type: SIGNIN_USER_FAILURE
-		});
+	.then(res => {
+		if(res.status === 200) 
+			return res.json()
+			.then(data => {
+				console.log(data.token);
+				localStorage.setItem('currentUser',data.token);
+				return dispatch(finishLoginUser(data))
+			});
+		else {
+			return res.json() 
+			.then(data => {
+				console.log(data);
+				return dispatch({
+					type: SIGNIN_USER_FAILURE,
+					payload: data
+				})
+			})
+		}
 	});
+
+
+
+	// .then (data => {
+		
+	// 		console.log(data.token);
+	// 		localStorage.setItem('currentUser',data.token);
+	// 		return dispatch(finishLoginUser(data));
+		
+	// }).catch( error => {
+	// 	dispatch({
+	// 		type: SIGNIN_USER_FAILURE,
+	// 		payload: error
+	// 	});
+	// });
 }
 
 
@@ -309,6 +334,44 @@ export const likePhoto = (like) => dispatch => {
 			});	
 		});
 }
+
+
+export const startUploadPhoto = () => ({
+	type: UPLOAD_PHOTO_START
+});
+
+export const finishUploadPhoto = data => ({
+	type: UPLOAD_PHOTO_SUCCESS,
+	payload: data
+});
+
+
+export const uploadPhoto = (photo) => dispatch => {
+	dispatch(startUploadPhoto());
+	
+	const uploadHeader = {
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json'
+		  },
+		  body: JSON.stringify(photo),
+		  method:"POST"
+	}
+
+	return fetch(`http://localhost:3001/photos/upload`, uploadHeader)
+		.then( res => res.json())
+		.then (data => {
+			console.log(data);
+			dispatch(updateLikePhoto(data))
+			})
+			.catch( err => {
+				return dispatch({
+					type: "UPLOAD_PHOTO_FAIL"
+				});	
+			});
+
+}
+
 
 
 

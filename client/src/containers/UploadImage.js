@@ -39,7 +39,7 @@ class UploadImage extends Component {
       }
       
       console.log(newPhoto);
-      this.props.dispatch(uploadPhoto());
+      this.props.dispatch(uploadPhoto(newPhoto));
       
     }
     

@@ -141,10 +141,10 @@ router.post('/upload',(req, res) => {
             console.log("error uploading")
         }
         else {
-            console.log(req.file);
+            console.log(req.body);
 
         }
-    })
+    });
     
 });
  

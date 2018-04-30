@@ -3,6 +3,7 @@ import { Comment, CommentForm } from "../components";
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Input, Form, Button } from 'semantic-ui-react';
+import { uploadPhoto } from "../actions";
 
 
 const mapStateToProps = state => ({
@@ -29,7 +30,19 @@ class UploadImage extends Component {
       e.preventDefault();
       
       console.log('handle uploading-', this.state.photo);
+
+      const newPhoto = {
+        photo: this.state.photo,
+        description: 'testing',
+        userId: '5ab1543f39c32c1a1622017f'
+
+      }
+      
+      console.log(newPhoto);
+      this.props.dispatch(uploadPhoto());
+      
     }
+    
   
     handleImageChange(e) {
       e.preventDefault();
@@ -51,14 +64,7 @@ class UploadImage extends Component {
 
       // reader.readAsDataURL(file)
 
-      const newPhoto = {
-        photo: this.state.photo,
-        description: 'testing',
-        userId: '5ab1543f39c32c1a1622017f'
 
-      }
-  
-      console.log(newPhoto);
     }
     
   

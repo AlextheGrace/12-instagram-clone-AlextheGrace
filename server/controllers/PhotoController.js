@@ -134,20 +134,18 @@ router.put("/:photoId/likes/:userId", (req, res) => {
 
 //Upload photo 
 
-router.post('/upload',upload.single('photo'),(req, res, next) => {
-    Photo.create({
-    createdAt:new Date(),
-    description: req.body.description,
-    imageUrl: req.body.image,
-    author: req.body.id,
-    comments: Array,
-    likes: Array
-    },(err, photo)=>{
-        if(error) return res.status(500).send("error while uploading photo");
+router.post('/upload',(req, res) => {
+    upload(req,res, (error) => {
+        if(error) {
+            res.status(500).send(error);
+            console.log("error uploading")
+        }
+        else {
+            console.log(req.file);
 
-        return res.status(200).send('sucessfully uploaded photo:'+ photo);
-    }
-    )
+        }
+    })
+    
 });
  
 

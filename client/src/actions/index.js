@@ -356,15 +356,13 @@ export const uploadPhoto = (upload) => dispatch => {
 		if(res.status === 200) 
 			return res.json()
 			.then(data => {
-				console.log(data.token);
-				localStorage.setItem('currentUser',data.token);
-				return dispatch(finishUploadPhoto(data))
+				return dispatch(finishUploadPhoto(data));
 			});
 		else {
 			return res.json() 
 			.then(data => {
 				console.log(data);
-				return dispatch(FailUploadPhoto())
+				return dispatch(FailUploadPhoto());
 			})
 		}
 	});

@@ -6,13 +6,15 @@ const Home = () => {
   return (
     <div className="Home">
       <p>Home</p>
-      <div class="eight wide column">
-      <PhotoFeed />
-      </div>
+        <div class="">
+          <div class="column">
+            <PhotoFeed />
+          </div>
+        </div>
     </div>
   );
 };
 
-
+ 
 export default Home;
  

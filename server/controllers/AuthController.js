@@ -63,7 +63,7 @@ router.post('/register',function(req,res) {
         password: req.body.password
      }, (error, user) => {
      if(error){
-         return res.status(500).send({errorhandler: "error while loggging in"});
+         return res.status(500).send({errorMessage: "error while loggging in"});
      }
      else {
          //create jwt token

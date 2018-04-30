@@ -52,6 +52,9 @@ class UserProfile extends Component {
     if (!auth) {
       return <Redirect to="/signin"/>;
     }
+    if(!photos) {
+      return <div> error uploading userprofile please try again</div>
+    }
    
 
   return (

@@ -14,6 +14,9 @@ class UserPhotoGrid extends Component {
   render() {
     const { photos } = this.props;
 
+    if(!photos || photos === undefined) {
+    return (<div>No photos to be found</div> );
+    }
     return (
         
       <ul className="photo-grid">

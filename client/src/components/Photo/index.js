@@ -32,7 +32,6 @@ export class Photo extends Component {
     return (
       <div className="ui card">
         <div className="content">
-        <div className="header">
           <div className="Photo-header__avatar-container">
             <Image
               src={photo.author.avatar}
@@ -41,17 +40,18 @@ export class Photo extends Component {
             />
           </div>
           <div className="Photo-header__metadata-container">
-            <div className="Photo-header__username">
+            
               <Link to={`/${photo.author.username}`}>{photo.author.username}</Link>
-            </div>
+            
             <div className="Photo-header__address">
               <Link to={`/explore/locations/${0}`}>{'New York City'}</Link>
             </div>
           </div>
-          <div className="Photo-header__timestamp">
+          <div className="right floated meta">
             <small>{photo.createdAt}</small>
           </div>
         </div>
+        <div className="content">
         <div
           className={`Photo__body`}>
           <Link to={`/photos/${photo._id}` }>
@@ -64,11 +64,15 @@ export class Photo extends Component {
             <div className="Photo__like-button">
               <LikeButton photoId={photo._id} userId={photo.author.userId}/>
             </div>
+            
             <CommentFeed comments={photo.comments}/>
+            <div className="extra content">
               <CommentForm photoId={photo._id}/>
+            </div>
           </div>
           </div>
-        </div> 
+        </div>
+       
       </div>
     )
   }

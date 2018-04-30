@@ -134,7 +134,7 @@ router.put("/:photoId/likes/:userId", (req, res) => {
 
 //Upload photo 
 
-router.post('/upload',(req, res) => {
+router.post('/upload',upload.single('photo'),(req, res, next) => {
     Photo.create({
     createdAt:new Date(),
     description: req.body.description,

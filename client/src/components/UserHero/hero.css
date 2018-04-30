@@ -1,0 +1,10 @@
+.profile-hero {
+    display: flex;
+}
+
+.profile-username {
+    font-weight: 100;
+    font-size: 2.5em;
+    padding-top: 0.5em;
+    padding-left: 0.5em;
+}

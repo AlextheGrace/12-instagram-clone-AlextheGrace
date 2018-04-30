@@ -14,15 +14,15 @@ const mapStateToProps = state => ({
 class UploadImage extends Component {
     constructor(props) {
       super(props);
-      this.state = {photo: '',imagePreviewUrl: '', description:''};
+      this.handleImageChange = this.handleImageChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+      this.state = {photo:'',imagePreviewUrl: '', description:''};
     }
 
     handleChange(e) {
       const target = e.target
 		const name = target.name;
-		this.setState({
-			[name]: e.target.value
-    });
+
   }
   
     handleSubmit(e) {
@@ -33,14 +33,39 @@ class UploadImage extends Component {
   
     handleImageChange(e) {
       e.preventDefault();
+
+       console.log(e.target.files[0]);
+       let reader = new FileReader();
+       let file = e.target.files[0];
+    
+       this.setState({ photo: file })
+      // let reader = new FileReader();
+      // let file = e.target.files[0];
+
+      // reader.onloadend = () => {
+      //   this.setState({
+      //     photo: file,
+      //     imagePreviewUrl: reader.result
+      //   });
+      
+
+      // reader.readAsDataURL(file)
+
+      const newPhoto = {
+        photo: this.state.photo,
+        description: 'testing',
+        userId: '5ab1543f39c32c1a1622017f'
+
+      }
   
-       
+      console.log(newPhoto);
     }
+    
   
     render() {
 
       
-      const { auth } = this.props;
+      const { auth,  } = this.props;
       
       // if (!auth) {
       //   return <Redirect to="/signin"/>;

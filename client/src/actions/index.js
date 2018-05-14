@@ -11,10 +11,9 @@ import {
 	SIGNIN_USER_START,
 	SIGNIN_USER_SUCCESS,
 	SIGNIN_USER_FAILURE,
-	LOGOUT_USER_START,
-	LOGOUT_USER_SUCESS,
-	LOGOUT_USER_FAILURE,
 	SIGNOUT_USER_START,
+	SIGNOUT_USER_SUCCESS,
+	SIGNOUT_USER_FAILURE,
 	ADD_COMMENT,
 	UPDATE_COMMENT,
 	ADD_COMMENT_FAIL,
@@ -119,13 +118,6 @@ export const finishRegisterUser = data => ({
 });
 
 
-
-
-
-
-
-
-
 //register user
 export const registerUser = (newUser) => dispatch => {
     dispatch(startRegisterUser());
@@ -197,11 +189,7 @@ export const finishLoginUser = data => ({
 });
 
 
-//pending
-export const signOutUser  = () => ({
-	type: SIGNOUT_USER_START
 
-});
 
 export const loginUser = (logindetails) => dispatch => {
 	dispatch(startLoginUser());
@@ -239,12 +227,31 @@ export const loginUser = (logindetails) => dispatch => {
 }
 
 
-export const logoutUser = () => dispatch => {
+//pending
+export const signOutUserStart  = () => ({
+	type: SIGNOUT_USER_START
 
+});
+
+export const signOutUserSucess  = () => ({
+	type: SIGNOUT_USER_SUCCESS
+
+});
+
+export const signOutUserFailure  = () => ({
+	type: SIGNOUT_USER_FAILURE
+
+});
+
+
+export const logoutUser = () => dispatch => {
+	dispatch(signOutUserStart());
 	localStorage.removeItem('currentUser');
-	dispatch(signOutUser());
+	return dispatch(signOutUserSucess());
 
 };
+
+
 
 
 

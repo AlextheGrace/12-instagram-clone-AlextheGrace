@@ -5,7 +5,9 @@ import {
     SIGNIN_USER_START,
 	SIGNIN_USER_SUCCESS,
     SIGNIN_USER_FAILURE,
-    SIGNOUT_USER_START
+    SIGNOUT_USER_START,
+    SIGNOUT_USER_FAILURE,
+    SIGNOUT_USER_SUCCESS
     
   } from "../constants";
 
@@ -13,7 +15,8 @@ import {
         isSubmitting: false,
          auth: false,
          errorMessage: '',
-         isLoggedIn: false
+         isLoggedIn: false,
+         user: {}
          
          
         // ocalStorage.getItem('currentUser') ? true : false, 
@@ -73,13 +76,28 @@ import {
                     isLoggedIn:true,
                     auth: action.payload.auth,
                     token: action.payload.token,
+                    user: action.payload.user
                     
             }; 
 
         case SIGNOUT_USER_START:
             return {
                 ...state,
-                    username:null,
+                    isSubmitting: true,
+                    isLoggedIn: true,
+                    auth: true,
+            };
+        case SIGNOUT_USER_FAILURE:
+            return {
+                ...state,
+                    isSubmitting: false,
+                    isLoggedIn: true,
+                    auth: true,
+            };
+
+            case SIGNOUT_USER_SUCCESS:
+            return {
+                ...state,
                     isSubmitting: false,
                     isLoggedIn: false,
                     auth: false,

@@ -20,7 +20,21 @@ var storage = multer.diskStorage({
       }
 });
 
-var upload = multer({storage: storage});
+var upload = multer({
+    storage: storage,
+    limits:{fileSize: 1000000 },
+    fileFilter: (req, file, cb) => {
+        // checkFileType(file,cb);
+    } 
+}).single('photoUpload');
+
+//check file type 
+
+// checkFileType(file,cb) = {
+//     //allowed extensions
+
+//     const file = /jpeg|jpg|png|gif/
+// }
 
 //models
 var User = require('../models/users');

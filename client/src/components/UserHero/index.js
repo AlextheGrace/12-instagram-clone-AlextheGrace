@@ -3,10 +3,15 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { Modal } from 'semantic-ui-react';
+import { logoutUser } from '../../actions';
 import './hero.css';
 
 
 // import './Photo.css';
+const mapStateToProps = state => ({
+  user: state.user.user,
+  
+});
 
 export class UserHero extends Component {
   constructor(props) {
@@ -15,6 +20,11 @@ export class UserHero extends Component {
     this.state = {
       response: ''
     }
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit() {
+    this.props.dispatch(logoutUser()); 
   }
 
 
@@ -35,7 +45,7 @@ export class UserHero extends Component {
           </div>
             <div className="profile-username">
             {  user.username }
-            <Link to="/logout">Logout</Link>
+            <button onClick={this.handleSubmit}>Logout</button>
       
             </div>
         </ul>     
@@ -46,6 +56,6 @@ export class UserHero extends Component {
 
 
 
-export default UserHero;
+export default connect(mapStateToProps)(UserHero);
 
 

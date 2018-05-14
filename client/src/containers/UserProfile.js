@@ -42,7 +42,7 @@ class UserProfile extends Component {
 
   logoutOnSubmit(e){
     e.preventDefault();
-    this.props.dispatch(logoutUser());
+    // this.props.dispatch(logoutUser());
   }
 
   render() {
@@ -75,11 +75,5 @@ class UserProfile extends Component {
     )} 
     </ul> */
  
- 
-  
-  
-
-
-
 
 export default connect(mapStateToProps)(UserProfile);

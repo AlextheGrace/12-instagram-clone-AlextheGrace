@@ -10,7 +10,7 @@ const mapStateToProps = state => {
     return {
             auth: state.auth.auth,
             isSubmitting: state.user.isSubmitting,
-
+            errorMessage: state.auth.errorMessage
            };
   }
 
@@ -45,7 +45,7 @@ class SignUpForm extends Component {
     }
     render() {
 
-        const { auth, isSubmitting } = this.props;
+        const { auth, isSubmitting, errorMessage } = this.props;
 
         if (auth) {
             return <Redirect to="/profile"/>;
@@ -53,28 +53,34 @@ class SignUpForm extends Component {
     
 
         if(isSubmitting) {
-            return (
-                <p>loading...</p>
-            );
+            return <Loader active inline='centered' /> 
         }
+
         return (
         <section className="App-signup">
           <h2>This is signup</h2>
-          <form onSubmit={this.handleSubmit}>
+          <Form onSubmit={this.handleSubmit}>
+            <Form.Field>
             <label>
             Username:
-            <input type="text" onChange={this.onChange} value={this.state.username} name="username" />
+            <Form.Input type="text" onChange={this.onChange} value={this.state.username} name="username" />
             </label>
+            </Form.Field>
+            <Form.Field>
             <label>
             Email:
-            <input type="text" onChange={this.onChange}  value={this.state.email} name="email" />
+            <Form.Input type="text" onChange={this.onChange}  value={this.state.email} name="email" />
             </label>
+            </Form.Field>
+            <Form.Field>
             <label>
             Password:
-            <input type="password" onChange={this.onChange}  value={this.state.password} name="password" />
+            <Form.Input type="password" onChange={this.onChange}  value={this.state.password} name="password" />
             </label>
-            <input type="submit" value="Submit" />
-          </form>
+            </Form.Field>
+            <Button onSubmit={this.handleSubmit}>Submit</Button>
+            <p className="error">{errorMessage}</p>
+          </Form>
         </section>
         )
     }

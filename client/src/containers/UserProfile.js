@@ -31,7 +31,7 @@ class UserProfile extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const tokenData = localStorage.getItem('currentUser');
     const decodedData = jwt_decode(tokenData);
     console.log(decodedData.username);

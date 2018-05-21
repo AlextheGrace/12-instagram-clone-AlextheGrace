@@ -32,6 +32,7 @@ export class Photo extends Component {
     return (
       <div className="card">
         <div className="content">
+        
           <div className="Photo-header__avatar-container">
             <Image
               src={photo.author.avatar}

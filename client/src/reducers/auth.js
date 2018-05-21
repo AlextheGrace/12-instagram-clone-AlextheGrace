@@ -15,10 +15,9 @@ import {
         isSubmitting: false,
          auth: false,
          errorMessage: '',
-         isLoggedIn: false,
+         isLoggedIn: localStorage.getItem('currentUser') ? true : false,
          user: {},
          
-        // localStorage.getItem('currentUser') ? true : false 
   };
 
   const authReducer = (state = initialState, action) => {
@@ -41,6 +40,7 @@ import {
         case SIGNUP_USER_SUCCESS:
             return {
                  ...state,
+                    isLoggedIn:true,
                     isSubmitting: false,
                     auth: action.payload.auth,
                     token: action.payload.token,

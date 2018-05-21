@@ -3,3 +3,18 @@
     height:3em;
     width: 3em;
 }
+
+
+.card {
+    margin: auto;
+    border: 1px solid lightgray;
+    padding: 1em;
+    border-radius: 10px;
+ 
+    
+}
+
+
+.username-link {
+    color:black;
+}

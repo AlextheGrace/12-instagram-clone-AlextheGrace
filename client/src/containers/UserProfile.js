@@ -59,8 +59,8 @@ class UserProfile extends Component {
 
   return (
     <div>
-    <UserHero user={user}/>
-    <PhotoGrid photos={photos}/>
+      <UserHero user={user}/>
+      <PhotoGrid photos={photos}/>
     </div>
     );
   }  

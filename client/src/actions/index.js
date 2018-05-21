@@ -354,15 +354,16 @@ export const uploadPhoto = (upload) => dispatch => {
 	      'Accept': 'application/json',
 	      'Content-Type': 'application/json'
 		},
-		body: JSON.stringify(upload),
+		body: upload,
 	    method:"POST"
 	}
 
-	return fetch(`http://localhost:3001/photos/upload`,uploadHeaderDetails)
+	return fetch(`http://localhost:3001/photos/upload/5ab1543f39c32c1a1622017f`,uploadHeaderDetails)
 	.then(res => {
 		if(res.status === 200) 
 			return res.json()
 			.then(data => {
+				console.log("in fetch"+ data.upload);
 				return dispatch(finishUploadPhoto(data));
 			});
 		else {

@@ -9,32 +9,7 @@ var multer = require('multer');
 
 var router = express.Router();
 // var tokenVerify = require('./middleware/tokenverify');
-
-
-var storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, './images');
-    },
-    filename: (req, file, cb) => {
-        cb(null, req.params.userId + '-' + Date.now() + file.originalname)
-      }
-});
-
-var upload = multer({
-    storage: storage,
-    limits:{fileSize: 1000000 },
-    fileFilter: (req, file, cb) => {
-        // checkFileType(file,cb);
-    } 
-}).single('photoUpload');
-
-//check file type 
-
-// checkFileType(file,cb) = {
-//     //allowed extensions
-
-//     const file = /jpeg|jpg|png|gif/
-// }
+ 
 
 //models
 var User = require('../models/users');
@@ -45,8 +20,8 @@ var Comment = require('../models/comments');
 
 // dont think this is safe but implementing this so i can use it locally 
 router.use((cors()));
-router.use(bodyParser.json());
-router.use(bodyParser.urlencoded( {extended: false }));
+// router.use(bodyParser.json({limit: '50mb'}));
+// router.use(bodyParser.urlencoded({extended: true }));
 
 
 //get all photos
@@ -147,20 +122,24 @@ router.put("/:photoId/likes/:userId", (req, res) => {
 
 
 //Upload photo 
+router.use(bodyParser.urlencoded({extended: true}));
 
-router.post('/upload',(req, res) => {
-    upload(req,res, (error) => {
-        if(error) {
-            res.status(500).send(error);
-            console.log("error uploading")
-        }
-        else {
-            console.log(req.body);
+var storage = multer.diskStorage({
+    destination: 'uploads/',
+    filename: function(req, upload, cb) {
+      cb(null, req.params.userid + '_' + upload.originalname)
+    }
+  })
+  
+  var upload = multer({storage});
 
-        }
-    });
+router.post('/upload/:userid',upload.single('upload'),(req, res) => {
     
-});
+    console.log(req);
+            res.status(200).send({message:"good req"});
+    }); 
+    
+
  
 
 module.exports = router;

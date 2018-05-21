@@ -19,8 +19,8 @@ var User = require('../models/users');
 
 // dont think this is safe but implementing this so i can use it locally 
 
-router.use(bodyParser.json());
-router.use(bodyParser.urlencoded( {extended: false }));
+// router.use(bodyParser.json());
+// router.use(bodyParser.urlencoded( {extended: false }));
 
 
 

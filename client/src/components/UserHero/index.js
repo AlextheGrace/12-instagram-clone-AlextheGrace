@@ -34,8 +34,7 @@ export class UserHero extends Component {
     return (
         
     <div>
-      <ul className="profile-hero">
-          
+      <ul className="profile-hero"> 
           <div className="Photo-header__avatar-container">
             <img 
                 src={user.avatar}
@@ -45,8 +44,7 @@ export class UserHero extends Component {
           </div>
             <div className="profile-username">
             {  user.username }
-            <button onClick={this.handleSubmit}>Logout</button>
-      
+            <button className="logout_button" onClick={this.handleSubmit}>Logout</button>
             </div>
         </ul>     
     </div>

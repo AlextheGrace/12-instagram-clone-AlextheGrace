@@ -17,29 +17,32 @@ class UploadImage extends Component {
       super(props);
       this.handleImageChange = this.handleImageChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
-      this.state = {photo:'',imagePreviewUrl: '', description:''};
+      this.state = {upload:'',imagePreviewUrl: '', description:''};
     }
 
     handleChange(e) {
       const target = e.target
-		const name = target.name;
+		  const name = target.name;
 
   }
   
     handleSubmit(e) {
       e.preventDefault();
       
-      console.log('handle uploading-', this.state.photo);
+      console.log('handle uploading-', this.state.upload);
 
       const newPhoto = {
-        photo: this.state.photo,
+        upload: this.state.upload,
         description: 'testing',
         userId: '5ab1543f39c32c1a1622017f'
 
       }
+
+      const testPhoto = new FormData();
+      testPhoto.append('upload',this.state.upload);
       
-      console.log(newPhoto);
-      this.props.dispatch(uploadPhoto(newPhoto));
+      console.log(testPhoto);
+      this.props.dispatch(uploadPhoto(testPhoto));
       
     }
     
@@ -51,7 +54,7 @@ class UploadImage extends Component {
        let reader = new FileReader();
        let file = e.target.files[0];
     
-       this.setState({ photo: file })
+       this.setState({ upload: e.target.files[0] })
       // let reader = new FileReader();
       // let file = e.target.files[0];
 
@@ -93,9 +96,9 @@ class UploadImage extends Component {
   
       return (
         <div className="previewComponent">
-          <Form onSubmit={this.handleSubmit} encType="multipart/form-data">
+          <Form onSubmit={this.handleSubmit} enctype="multipart/form-data">
             <Input className="fileInput" 
-              type="file" id="photo"
+              type="file" name="upload"
               onChange={this.handleImageChange} />
             <Button className="submitButton" 
               type="submit" 

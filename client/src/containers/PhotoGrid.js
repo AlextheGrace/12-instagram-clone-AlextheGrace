@@ -36,33 +36,30 @@ class PhotoGrid extends Component {
     }
 
     return (
-    <div className="photo-grid-container">
-      <ul className="photo-grid">
+      <div className="photo-grid">
         {
           photos.map((photo) => (
-            <li key={photo._id}>
-                <Modal 
+            <div className ="item-test" key={photo._id}>
+              <img src={photo.imageUrl}/>
+            </div>
+          ))
+        }
+      </div>
+    );
+  }
+}
+                {/* <Modal 
                 style={inlineStyle.modal}
                 trigger={<img src={photo.imageUrl}/>}>
                 <Modal.Content image>
-                <Image wrapped size='medium' src={photo.imageUrl} />
+                <Image wrapped size='medium' className="photo-test" src={photo.imageUrl} />
                 <Modal.Description>
                   <Header>{photo.description}</Header>
                   <p>We've found the following gravatar image associated with your e-mail address.</p>
                   <p>Is it okay to use this photo?</p>
                 </Modal.Description>
                 </Modal.Content> 
-                </Modal> 
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-
-    );
-  }
-}
-
+                </Modal>  */}
 
 
 export default PhotoGrid;

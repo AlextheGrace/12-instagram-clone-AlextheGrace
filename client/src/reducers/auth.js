@@ -16,10 +16,9 @@ import {
          auth: false,
          errorMessage: '',
          isLoggedIn: false,
-         user: {}
+         user: {},
          
-         
-        // ocalStorage.getItem('currentUser') ? true : false, 
+        // localStorage.getItem('currentUser') ? true : false 
   };
 
   const authReducer = (state = initialState, action) => {

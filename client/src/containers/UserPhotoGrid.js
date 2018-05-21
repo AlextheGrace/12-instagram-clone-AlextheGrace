@@ -17,15 +17,14 @@ class UserPhotoGrid extends Component {
     if(!photos || photos === undefined) {
     return (<div>No photos to be found</div> );
     }
-    return (
-        
+
+    return ( 
       <ul className="photo-grid">
         {
           photos.map((photo) => (
-            <li key={photo._id}>
-              <p>{photo.imageUrl}</p>
-              
-            </li>
+            <div className="photo-item"  key={photo._id}>
+              {photo.imageUrl}
+            </div>
             )
           )
         }

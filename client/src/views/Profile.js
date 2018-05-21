@@ -6,17 +6,14 @@ import { Redirect } from 'react-router-dom';
 
 
 
-// const mapStateToProps = state => ({
-//     auth: state.auth.auth,
-//     user: state.user.user,
-    
-// });
-
-
 
 export class Profile extends Component  {
   constructor(props){
     super(props);
+
+  }
+
+  componentWillMount() {
 
   }
 
@@ -27,7 +24,6 @@ export class Profile extends Component  {
     const { username } = this.props
     return (
       <div className="Profile">
-        <p> Profile page </p>
           <UserProfile/>
       </div>
     );

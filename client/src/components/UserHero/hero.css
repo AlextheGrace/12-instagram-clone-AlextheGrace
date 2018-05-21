@@ -1,5 +1,8 @@
 .profile-hero {
     display: flex;
+    border-bottom: 1px solid grey;
+    width:90%;
+    margin: auto;
 }
 
 .profile-username {
@@ -7,4 +10,11 @@
     font-size: 2.5em;
     padding-top: 0.5em;
     padding-left: 0.5em;
+}
+
+
+.logout_button {
+    font-size: 18px;
+    border: none;
+    color:rgb(0, 162, 255);
 }
